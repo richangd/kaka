@@ -6,7 +6,11 @@ public class telephones {
 	
 	private boolean mobile;
 	private boolean fixed_line;
-	
+	 
+	public telephones(boolean b, boolean c) {
+		this.mobile = b;
+		this.fixed_line = c;
+	}
 	public boolean isMobile() {
 		return mobile;
 	}

@@ -25,6 +25,17 @@ public class editability {
 		this.gender = gender;
 		this.is_lunar = is_lunar;
 		
+	} 
+	public editability(boolean b, boolean c, boolean d, List<com.example.demo.domain.telephones> te, boolean e,
+			boolean f, boolean g) {
+		this.name = b;
+		this.nickname = c;
+		this.email = d;
+		this.telephone = e;
+		this.telephones = te;
+		this.birthday = f;
+		this.gender = g;
+		this.is_lunar = g;
 	}
 	public boolean getName() {
 		return name;

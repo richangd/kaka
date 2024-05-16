@@ -59,7 +59,10 @@ public class apiController {
         
     	List<telephones> te = new ArrayList<>();
     	List<synchronize_options> sy= new ArrayList<>();    	
-    	List ed = new ArrayList<>(); 
+    	List<editability> ed = new ArrayList<>();
+    	
+    	te.add(new telephones(true, true));
+    	ed.add(new editability(true, true, true, te, true, true, true));
         
     	sy.add(new synchronize_options("정직원 제외", "except_full_time_employee"));
     	sy.add(new synchronize_options("계약 제외", "except_contract"));
