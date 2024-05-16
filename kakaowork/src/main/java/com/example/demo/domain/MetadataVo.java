@@ -12,10 +12,11 @@ public class MetadataVo {
 	
 	
 
-	public MetadataVo(editability ed, List sy) {
+	public MetadataVo(Profile pr, List sy) {
+		
 		this._code = 200;
 		this._message = "ok";
-		this.profile = ed;
+		this.profile = pr;
 		this.synchronize_options = sy;
 	}
 

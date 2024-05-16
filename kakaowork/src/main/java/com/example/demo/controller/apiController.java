@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
 import com.example.demo.domain.Param;
+import com.example.demo.domain.Profile;
 import com.example.demo.domain.agentVo;
 import com.example.demo.domain.editability;
 import com.example.demo.domain.idreturn;
@@ -54,7 +55,8 @@ public class apiController {
     	telephones te = new telephones();
     	List<synchronize_options> sy= new ArrayList<>();
     	
-    	editability ed = new editability(te); 
+    	editability ed = new editability(te);
+    	Profile pr = new Profile(ed);
     	//List<editability> ed = new ArrayList<>();
     	
     	//te.add(new telephones(true, true));
@@ -62,7 +64,7 @@ public class apiController {
         
     	sy.add(new synchronize_options("정직원 제외", "except_full_time_employee"));
         
-    	MetadataVo ag = new MetadataVo(ed, sy);
+    	MetadataVo ag = new MetadataVo(pr, sy);
     	
         return ag;
     }
