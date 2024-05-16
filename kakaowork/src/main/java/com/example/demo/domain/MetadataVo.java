@@ -12,7 +12,7 @@ public class MetadataVo {
 	
 	
 
-	public MetadataVo(List ed, List sy) {
+	public MetadataVo(editability ed, List sy) {
 		this._code = 200;
 		this._message = "ok";
 		this.profile = ed;
