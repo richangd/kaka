@@ -58,7 +58,7 @@ public class apiController {
     		
         	ag = new agentVo(200, "ok", new String[]{g1,g2,g3,g4});
         }else {
-        	ag = new agentVo(400,"Failed");
+        	ag = new agentVo(400, "Kep-OrgLoginType is not present.");
         }
     	
         return ag;
