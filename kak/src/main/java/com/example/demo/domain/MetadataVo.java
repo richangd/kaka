@@ -7,26 +7,19 @@ public class MetadataVo {
 	private int _code;
 	private String _message;
 	private Object profile;
-	private Object editability;
 	private Object synchronize_options;
 	//private String[] account_categories;
 	
 	
-	public MetadataVo(List ed, List sy) {
+
+	public MetadataVo(Profile pr, List sy) {
+		
 		this._code = 200;
 		this._message = "ok";
-		this.profile = ed;
+		this.profile = pr;
 		this.synchronize_options = sy;
 	}
-	
-/*
-	public MetadataVo(List ed, List sy) {
-		this._code = 200;
-		this._message = "ok";
-		this.profile = ed;
-		this.synchronize_options = sy;
-	}
-*/
+
 
 	public int get_code() {
 		return _code = 200;

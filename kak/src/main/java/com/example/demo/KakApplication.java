@@ -1,15 +1,13 @@
 package com.example.demo;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
-public class KakaoworkApplication {
+public class KakApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(KakaoworkApplication.class, args);
+		SpringApplication.run(KakApplication.class, args);
 	}
 
 }
