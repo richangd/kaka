@@ -21,6 +21,8 @@ import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
 import com.example.demo.domain.Param;
 import com.example.demo.domain.Profile;
+import com.example.demo.domain.Report;
+import com.example.demo.domain.ReportVo;
 import com.example.demo.domain.agentVo;
 import com.example.demo.domain.editability;
 import com.example.demo.domain.idreturn;
@@ -67,6 +69,13 @@ public class apiController {
     	MetadataVo ag = new MetadataVo(pr, sy);
     	
         return ag;
+    }
+    
+    @PostMapping("/agent/v0/reportError")
+    public ReportVo post(@RequestBody Report report) {
+    	ReportVo re = new ReportVo(200, "ok");   
+
+        return re;
     }
 
 }
