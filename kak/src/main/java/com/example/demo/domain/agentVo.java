@@ -25,7 +25,7 @@ public class agentVo {
 	public String[] getcapabilities() {
 		String g1 = "agent";
 		String g2 = "user";
-		String g3 = "Login";
+		String g3 = "login";
 		String g4 = "orgUnit";
 		
 		return capabilities =  new String[]{g1,g2,g3,g4};
