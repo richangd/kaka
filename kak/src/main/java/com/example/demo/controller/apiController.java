@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,9 +48,18 @@ public class apiController {
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
-    public agentVo getAgentCapabilities() {
-        
+    public agentVo getAgentCapabilities(@RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
     	agentVo ag = new agentVo();
+    	if(OrgLoginType !=null) {
+    		String g1 = "agent";
+    		String g2 = "user";
+    		String g3 = "Login";
+    		String g4 = "orgUnit";
+    		
+        	ag = new agentVo(200, "ok", new String[]{g1,g2,g3,g4});
+        }else {
+        	ag = new agentVo(400,"Failed");
+        }
     	
         return ag;
     }

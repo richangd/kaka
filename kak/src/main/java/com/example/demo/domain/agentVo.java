@@ -6,29 +6,42 @@ public class agentVo {
 	private String _message;
 	private String[] capabilities;	
 
+	public agentVo(int i, String st, String[] stg) {
+		this._code = i;
+		this._message = st;
+		this.capabilities = stg;
+	}
+
+	public agentVo() {
+		this._code = _code;
+		this._message = _message;
+		this.capabilities = capabilities;
+	}
+
+	public agentVo(int i, String st) {
+		this._code = i;
+		this._message = st;
+	}
+
 	public int get_code() {
-		return _code = 200;
+		return _code = _code;
 	}
 
 	public void set_code(int _code) {
-		this._code = 200;
+		this._code = _code;
 	}
 
 	public String get_message() {
-		return _message = "ok";
+		return _message = _message;
 	}
 
 	public void setReason(String _message) {
-		this._message = "ok";
+		this._message = _message;
 	}
 
 	public String[] getcapabilities() {
-		String g1 = "agent";
-		String g2 = "user";
-		String g3 = "Login";
-		String g4 = "orgUnit";
-		
-		return capabilities =  new String[]{g1,g2,g3,g4};
+				
+		return capabilities =  capabilities;
 	}
 
 	public void setcapabilities(String[] capabilities) {
