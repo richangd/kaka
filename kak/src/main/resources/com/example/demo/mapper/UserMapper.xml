@@ -9,7 +9,8 @@
 		SELECT '222' userId, 'Dana' userName, '031-0000-2222' phoneNumber
 		  FROM DUAL
 		UNION
-		SELECT '333' userId, 'Emma' userName, '02-0000-3333' phoneNumber FROM DUAL
+		SELECT '333' userId, 'Emma' userName, '02-0000-3333' phoneNumber 
+		  FROM DUAL
 	</select>
 	
 	<select id="getAgentList" resultType="com.example.demo.domain.UserVO">
