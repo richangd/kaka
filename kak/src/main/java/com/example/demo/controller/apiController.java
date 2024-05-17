@@ -17,12 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.domain.Content;
 import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
 import com.example.demo.domain.Param;
 import com.example.demo.domain.Profile;
 import com.example.demo.domain.Report;
 import com.example.demo.domain.ReportVo;
+import com.example.demo.domain.ValidUser;
+import com.example.demo.domain.ValidVo;
+import com.example.demo.domain.Valid;
 import com.example.demo.domain.agentVo;
 import com.example.demo.domain.editability;
 import com.example.demo.domain.idreturn;
@@ -72,6 +76,16 @@ public class apiController {
     	ReportVo re = new ReportVo(200, "ok");   
 
         return re;
+    }
+    
+    @GetMapping("/user/v0/getValidUsers")
+    public ValidVo getValidUsers(@RequestBody Valid Valid) {
+        
+    	Content ct = new Content();
+    	
+    	ValidVo va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+    	
+        return va;
     }
 
 }
