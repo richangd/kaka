@@ -3,7 +3,13 @@
 <mapper namespace="com.example.demo.mapper.UserMapper">
  
 	<select id="selectUserList" resultType="com.example.demo.domain.UserVO">
-		SELECT * FROM temp1
+		SELECT '111' userId, 'Hailey' userName, '02-0000-1111' phoneNumber
+		  FROM DUAL
+		UNION
+		SELECT '222' userId, 'Dana' userName, '031-0000-2222' phoneNumber
+		  FROM DUAL
+		UNION
+		SELECT '333' userId, 'Emma' userName, '02-0000-3333' phoneNumber FROM DUAL
 	</select>
 	
 	<select id="getAgentList" resultType="com.example.demo.domain.UserVO">
