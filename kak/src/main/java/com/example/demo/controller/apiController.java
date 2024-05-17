@@ -82,8 +82,15 @@ public class apiController {
     }
     
     @PostMapping("/agent/v0/reportError")
-    public ReportVo post(@RequestBody Report report) {
-    	ReportVo re = new ReportVo(200, "ok");   
+    public ReportVo post(@RequestBody Report report, @RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
+    	ReportVo re = new ReportVo();
+    	if(OrgLoginType != null && OrgLoginType.equals("ID 299989")) {
+    		re = new ReportVo(200, "ok");
+    	}else {
+    		re = new ReportVo(400, "Kep-OrgLoginType is not present.");
+    	}
+    		
+    	   
 
         return re;
     }

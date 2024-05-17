@@ -14,6 +14,12 @@ public class ReportVo {
 
 
 
+	public ReportVo() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public int get_code() {
 		return _code;
 	}
