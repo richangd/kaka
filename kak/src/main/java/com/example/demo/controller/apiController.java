@@ -84,19 +84,107 @@ public class apiController {
     @PostMapping("/agent/v0/reportError")
     public ReportVo post(@RequestBody Report report, @RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
     	ReportVo re = new ReportVo();
-    	if(OrgLoginType != null && OrgLoginType.equals("ID 299989")) {
+    	if(OrgLoginType != null && OrgLoginType.equals("ID 299989")) {    	
     		re = new ReportVo(200, "ok");
     	}else {
     		re = new ReportVo(400, "Kep-OrgLoginType is not present.");
     	}
-    		
-    	   
-
         return re;
+    }    
+
+	@GetMapping("/user/v0/getValidUsers")
+    public String getValidUsers() {
+            	
+    	String jsonString = "{"
+                + "\"_code\": 200,"
+                + "\"_message\": \"ok\","
+                + "\"total_pages\": 12,"
+                + "\"total_elements\": 5555,"
+                + "\"size\": 500,"
+                + "\"number\": 2,"
+                + "\"number_of_elements\": 500,"
+                + "\"is_last\": false,"
+                + "\"is_first\": false,"
+                + "\"contents\": ["
+                + "    {"
+                + "        \"status\": \"ACTIVE\","
+                + "        \"identifiers\": [\"test.kim\", \"087217\", \"test.kim@dktechin.com\"],"
+                + "        \"name\": \"테스트\","
+                + "        \"nickname\": \"테스트\","
+                + "        \"email\": \"test.kim@dktechin.com\","
+                + "        \"email_verification\": \"TO_VERIFY\","
+                + "        \"telephone_international\": \"+82 10-1234-5678\","
+                + "        \"telephone_for_display\": \"010-1234-5678 내선 5\","
+                + "        \"telephone_verification\": \"TO_VERIFY\","
+                + "        \"more_telephones\": ["
+                + "            {"
+                + "                \"type\": \"MOBILE\","
+                + "                \"international\": \"+82 10-1111-2222\","
+                + "                \"display\": \"010-1111-2222\","
+                + "                \"verification\": \"TOVERIFY\""
+                + "            },"
+                + "            {"
+                + "                \"type\": \"FIXED_LINE\","
+                + "                \"international\": \"+82 31-3333-4444\","
+                + "                \"display\": \"031-3333-4444\","
+                + "                \"verification\": \"TOVERIFY\""
+                + "            },"
+                + "            {"
+                + "                \"type\": \"IPT_MOBILE\","
+                + "                \"international\": \"+82 10-5555-6666\","
+                + "                \"display\": \"010-5555-6666\","
+                + "                \"verification\": \"TOVERIFY\""
+                + "            },"
+                + "            {"
+                + "                \"type\": \"IPT\","
+                + "                \"display\": \"개발 1팀\","
+                + "                \"number\": \"123456789\""
+                + "            },"
+                + "            \"...\""
+                + "        ],"
+                + "        \"birthday\": \"01-01\","
+                + "        \"gender\": \"MALE\","
+                + "        \"is_lunar\": false,"
+                + "        \"photo_url\": \"\""
+                + "    },"
+                + "    {"
+                + "        \"status\": \"ACTIVE\","
+                + "        \"identifiers\": [\"test.park\", \"012345\", \"test.park@dktechin.com\"],"
+                + "        \"name\": \"테스트\","
+                + "        \"nickname\": \"테스트\","
+                + "        \"email\": \"test.park@dktechin.com\","
+                + "        \"email_verification\": \"TO_VERIFY\","
+                + "        \"telephone_international\": \"+82 10-8765-4321\","
+                + "        \"telephone_for_display\": \"010-8765-4321 휴대용\","
+                + "        \"telephone_verification\": \"TO_VERIFY\","
+                + "        \"more_telephones\": ["
+                + "            {"
+                + "                \"type\": \"FIXED_LINE\","
+                + "                \"international\": \"+82 31-2222-5555\","
+                + "                \"display\": \"031-2222-5555\","
+                + "                \"verification\": \"TOVERIFY\""
+                + "            },"
+                + "            {"
+                + "                \"type\": \"IPT\","
+                + "                \"display\": \"개발 2팀\","
+                + "                \"number\": \"987654321\""
+                + "            },"
+                + "            \"...\""
+                + "        ],"
+                + "        \"birthday\": \"01-01\","
+                + "        \"gender\": \"FEMALE\","
+                + "        \"is_lunar\": false,"
+                + "        \"photo_url\": \"\""
+                + "    },"
+                + "    \"...\""
+                + "]"
+                + "}";
+    	
+        return jsonString;
     }
-    
-    @GetMapping("/user/v0/getValidUsers")
-    public ValidVo getValidUsers(@RequestBody Valid Valid) {
+	
+	@GetMapping("/user/v0/getChangedUsers")
+    public ValidVo getgetChangedUsers(@RequestBody Valid Valid) {
         
     	Content ct = new Content();
     	
