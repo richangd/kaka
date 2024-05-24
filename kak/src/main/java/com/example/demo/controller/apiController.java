@@ -52,17 +52,18 @@ public class apiController {
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
-    public agentVo getAgentCapabilities(@RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
-    	agentVo ag = new agentVo();    	
-    	if(OrgLoginType !=null && OrgLoginType.equals("ID 299989")) {
-    		String g1 = "agent";
+    public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    	agentVo ag = new agentVo();
+    	
+    	if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	String g1 = "agent";
     		String g2 = "user";
     		String g3 = "Login";
     		String g4 = "orgUnit";
     		
         	ag = new agentVo(200, "ok", new String[]{g1,g2,g3,g4});
-        }else {
-        	ag = new agentVo(400, "Kep-OrgLoginType is not present.");
         }
     	
         return ag;
@@ -77,7 +78,7 @@ public class apiController {
     }
     
     @GetMapping("/user/v0/getUserMetadata")
-    public MetadataVo getUserMetadata(@RequestHeader(value = "Kep-OrgLoginType", required = false) String requiredHeader) {
+    public MetadataVo getUserMetadata(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
     	MetadataVo ag = new MetadataVo();
     	telephones te = new telephones();
@@ -89,57 +90,61 @@ public class apiController {
     	sy.add(new synchronize_options("정직원 제외", "except_full_time_employee"));
     	
     	
-    	if (requiredHeader == null) {
+    	if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
         	ag = new MetadataVo(pr, sy);
         }
-        /*
-    	
-    	if(OrgLoginType != null) {
-    		ag = new MetadataVo(pr, sy);
-    	}else {
-    		ag = new MetadataVo(400, "Internal server error");
-    	}
-        
-    	*/
     	
         return ag;
     }
     
     @PostMapping("/agent/v0/reportError")
-    public ReportVo post(@RequestBody Report report, @RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
+    public ReportVo post(@RequestBody Report report, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
     	ReportVo re = new ReportVo();
     	String Capab = report.getCapability();
     	Integer Co = report.getCode();
-    	if(OrgLoginType != null && OrgLoginType.equals("ID 299989") && Capab != null && Co != null) {    	
-    		re = new ReportVo(200, "ok");
-    	}else {
-    		re = new ReportVo(400, "Kep-OrgLoginType is not present.");
-    	}
+    	
+    	if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	re = new ReportVo(200, "ok");
+        }
+    	    	
         return re;
     }    
 
 	@GetMapping("/user/v0/getValidUsers")
-    public ValidVo getValidUsers(@RequestBody Valid Valid) {
-            	
+    public ValidVo getValidUsers(@RequestBody Valid Valid, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+        
+		ValidVo va = new ValidVo();
 		more_telephones ph =  new more_telephones();
 		Content ct = new Content(ph);
     	
+		if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+        }
     	
-    	ValidVo va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
     	
         return va;
     }
 	
 	@GetMapping("/user/v0/getChangedUsers")
-    public ValidVo getgetChangedUsers(@RequestBody ChangedUser Chu) {
+    public ValidVo getgetChangedUsers(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+		
+		ValidVo va = new ValidVo();
+		
 		more_telephones ph =  new more_telephones();
 		Content ct = new Content(ph);
     	
-    	
-    	ValidVo va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+		if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+        }    	
     	
         return va;
     }
