@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.domain.Agent;
 import com.example.demo.domain.Content;
 import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
@@ -49,8 +50,8 @@ public class apiController {
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
-    public agentVo getAgentCapabilities(@RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
-    	agentVo ag = new agentVo();
+    public agentVo getAgentCapabilities(@RequestHeader("Kep-OrgLoginType") String OrgLoginType, @RequestBody Agent agt ) {
+    	agentVo ag = new agentVo();    	
     	if(OrgLoginType !=null && OrgLoginType.equals("ID 299989")) {
     		String g1 = "agent";
     		String g2 = "user";
@@ -85,7 +86,9 @@ public class apiController {
     @PostMapping("/agent/v0/reportError")
     public ReportVo post(@RequestBody Report report, @RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
     	ReportVo re = new ReportVo();
-    	if(OrgLoginType != null && OrgLoginType.equals("ID 299989")) {    	
+    	String Capab = report.getCapability();
+    	Integer Co = report.getCode();
+    	if(OrgLoginType != null && OrgLoginType.equals("ID 299989") && Capab != null && Co != null) {    	
     		re = new ReportVo(200, "ok");
     	}else {
     		re = new ReportVo(400, "Kep-OrgLoginType is not present.");
