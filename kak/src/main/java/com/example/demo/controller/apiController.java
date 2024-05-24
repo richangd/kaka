@@ -140,9 +140,10 @@ ValidVo va = new ValidVo();
 		
 		more_telephones ph =  new more_telephones();
 		String g1 = "김창범";
+		String g2 = "087217";
 		String g3 = "Kim.Changbeom@kr.canon";
 		
-		String[] li = new String[]{g1,g3};		
+		String[] li = new String[]{g1, g2, g3};		
 		
 		
 		Content ct = new Content("REGISTERED", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph);
