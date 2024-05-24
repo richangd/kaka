@@ -50,7 +50,7 @@ public class apiController {
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
-    public agentVo getAgentCapabilities(@RequestHeader("Kep-OrgLoginType") String OrgLoginType, @RequestBody Agent agt ) {
+    public agentVo getAgentCapabilities(@RequestHeader("Kep-OrgLoginType") String OrgLoginType) {
     	agentVo ag = new agentVo();    	
     	if(OrgLoginType !=null && OrgLoginType.equals("ID 299989")) {
     		String g1 = "agent";
