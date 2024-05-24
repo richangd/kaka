@@ -4,19 +4,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-public class Valid {
+public class ChangedUser {
 	
-	private int basistime;
 	private int page_number;
 	private int page_size;
 	
 	
-	public int getBasistime() {
-		return basistime;
-	}
-	public void setBasistime(int basistime) {
-		this.basistime = basistime;
-	}
 	public int getPage_number() {
 		return page_number;
 	}

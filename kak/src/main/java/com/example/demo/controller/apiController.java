@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.Agent;
+import com.example.demo.domain.ChangedUser;
 import com.example.demo.domain.Content;
 import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
@@ -97,15 +98,19 @@ public class apiController {
     }    
 
 	@GetMapping("/user/v0/getValidUsers")
-    public ValidVo getValidUsers() {
+    public ValidVo getValidUsers(@RequestBody Valid Valid) {
             	
-		ValidVo vd = new ValidVo();
+		more_telephones ph =  new more_telephones();
+		Content ct = new Content(ph);
     	
-        return vd;
+    	
+    	ValidVo va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+    	
+        return va;
     }
 	
 	@GetMapping("/user/v0/getChangedUsers")
-    public ValidVo getgetChangedUsers(@RequestBody Valid Valid) {
+    public ValidVo getgetChangedUsers(@RequestBody ChangedUser Chu) {
         
 		more_telephones ph =  new more_telephones();
 		Content ct = new Content(ph);
