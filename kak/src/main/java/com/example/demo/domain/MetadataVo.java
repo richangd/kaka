@@ -21,6 +21,17 @@ public class MetadataVo {
 	}
 
 
+	public MetadataVo() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public MetadataVo(int i, String st) {
+		this._code = i;
+		this._message = st;
+	}
+
+
 	public int get_code() {
 		return _code = 200;
 	}

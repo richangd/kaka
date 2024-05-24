@@ -36,6 +36,7 @@ import com.example.demo.domain.idreturn;
 import com.example.demo.domain.more_telephones;
 import com.example.demo.domain.synchronize_options;
 import com.example.demo.domain.telephones;
+import com.example.demo.exeption.MissingRequiredHeaderException;
 
 
 @RestController
@@ -67,19 +68,41 @@ public class apiController {
         return ag;
     }
     
+    @GetMapping("/example")
+    public String example(@RequestHeader(value = "X-Required-Header", required = false) String requiredHeader) {
+        if (requiredHeader == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }
+        return "Success!";
+    }
+    
     @GetMapping("/user/v0/getUserMetadata")
-    public MetadataVo getUserMetadata() {
+    public MetadataVo getUserMetadata(@RequestHeader(value = "Kep-OrgLoginType", required = false) String requiredHeader) {
         
+    	MetadataVo ag = new MetadataVo();
     	telephones te = new telephones();
     	List<synchronize_options> sy= new ArrayList<>();
     	
     	editability ed = new editability(te);
     	Profile pr = new Profile(ed);
 
-        
     	sy.add(new synchronize_options("정직원 제외", "except_full_time_employee"));
+    	
+    	
+    	if (requiredHeader == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	ag = new MetadataVo(pr, sy);
+        }
+        /*
+    	
+    	if(OrgLoginType != null) {
+    		ag = new MetadataVo(pr, sy);
+    	}else {
+    		ag = new MetadataVo(400, "Internal server error");
+    	}
         
-    	MetadataVo ag = new MetadataVo(pr, sy);
+    	*/
     	
         return ag;
     }
