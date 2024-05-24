@@ -97,7 +97,7 @@ public class apiController {
     	String Capab = report.getCapability();
     	Integer Co = report.getCode();
     	
-    	if (OrgLoginType == null || Capab == null || Co == null) {
+    	if (OrgLoginType == null || Capab.length() == 0 || Co <= 0) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
         	re = new ReportVo(200, "ok");
