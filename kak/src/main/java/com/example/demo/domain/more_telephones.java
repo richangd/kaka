@@ -3,10 +3,11 @@ package com.example.demo.domain;
 public class more_telephones {
 
 	private String type;
+	private String international;
 	private String number;
 	
 	public String getType() {
-		return "IPT";
+		return "MOBILE";
 	}
 	public void setType(String type) {
 		this.type = type;

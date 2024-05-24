@@ -109,15 +109,23 @@ public class apiController {
 	@GetMapping("/user/v0/getValidUsers")
     public ValidVo getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
-		ValidVo va = new ValidVo();
+ValidVo va = new ValidVo();
+		
 		more_telephones ph =  new more_telephones();
-		Content ct = new Content(ph);
+		String g1 = "김창범";
+		String g3 = "Kim.Changbeom@kr.canon";
+		
+		String[] li = new String[]{g1,g3};		
+		
+		
+		Content ct = new Content("REGISTERED", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph);
+		
 		Integer num = Val.getPage_number();
     	
 		if (OrgLoginType == null || num <= 0) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+        	va = new ValidVo(200, "ok", 3, 1111, 500, 2, 111, false, false ,ct);
         }
     	
     	
@@ -131,7 +139,13 @@ public class apiController {
 		ValidVo va = new ValidVo();
 		
 		more_telephones ph =  new more_telephones();
-		Content ct = new Content(ph);
+		String g1 = "김창범";
+		String g3 = "Kim.Changbeom@kr.canon";
+		
+		String[] li = new String[]{g1,g3};		
+		
+		
+		Content ct = new Content("REGISTERED", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph);
     	
 		String tm = Chu.getBasis_time();
 		Integer num = Chu.getPage_number();
