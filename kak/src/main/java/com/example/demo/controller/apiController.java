@@ -107,13 +107,14 @@ public class apiController {
     }    
 
 	@GetMapping("/user/v0/getValidUsers")
-    public ValidVo getValidUsers(@RequestBody Valid Valid, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public ValidVo getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		ValidVo va = new ValidVo();
 		more_telephones ph =  new more_telephones();
 		Content ct = new Content(ph);
+		Integer num = Val.getPage_number();
     	
-		if (OrgLoginType == null) {
+		if (OrgLoginType == null || num <= 0) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
         	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
@@ -132,7 +133,10 @@ public class apiController {
 		more_telephones ph =  new more_telephones();
 		Content ct = new Content(ph);
     	
-		if (OrgLoginType == null) {
+		String tm = Chu.getBasis_time();
+		Integer num = Chu.getPage_number();
+		
+		if (OrgLoginType == null || tm.length() == 0 || num <= 0) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
         	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
