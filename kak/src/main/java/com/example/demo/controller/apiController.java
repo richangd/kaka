@@ -67,15 +67,7 @@ public class apiController {
         }
     	
         return ag;
-    }
-    
-    @GetMapping("/example")
-    public String example(@RequestHeader(value = "X-Required-Header", required = false) String requiredHeader) {
-        if (requiredHeader == null) {
-            throw new MissingRequiredHeaderException("The required header is missing.");
-        }
-        return "Success!";
-    }
+    }    
     
     @GetMapping("/user/v0/getUserMetadata")
     public MetadataVo getUserMetadata(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
@@ -105,7 +97,7 @@ public class apiController {
     	String Capab = report.getCapability();
     	Integer Co = report.getCode();
     	
-    	if (OrgLoginType == null) {
+    	if (OrgLoginType == null || Capab == null || Co == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
         	re = new ReportVo(200, "ok");
