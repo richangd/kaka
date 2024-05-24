@@ -30,6 +30,9 @@ public class ValidVo {
 		this.is_first = c;
 		this.contents = ct;
 	}
+	public ValidVo() {
+		// TODO Auto-generated constructor stub
+	}
 	public int get_code() {
 		return _code;
 	}

@@ -15,7 +15,7 @@ public class ValidUser {
 	private int number_of_elements;
 	private boolean is_last;
 	private boolean is_first;
-	private Object contents;
+	private Object[] contents;
 	
 	public int get_code() {
 		return _code;
@@ -74,7 +74,7 @@ public class ValidUser {
 	public Object getContents() {
 		return contents;
 	}
-	public void setContents(Object contents) {
+	public void setContents(Object[] contents) {
 		this.contents = contents;
 	}
 
