@@ -11,7 +11,7 @@ public class Content {
 	private String status;
 	private String[] identifiers;	
 	private String name;
-	private String nickname;
+	//private String nickname;
 	private String email;
 	private String email_verifiacation;
 	private String telephone_international;
@@ -32,7 +32,7 @@ public class Content {
 		this.status = st;
 		this.identifiers = li;
 		this.name = st2;
-		this.nickname = st3;
+	//	this.nickname = st3;
 		this.email = st4;
 		this.email_verifiacation = st5;
 		this.telephone_international = st6;
@@ -79,14 +79,14 @@ public class Content {
 	public void setMore_telephones(Object[] more_telephones) {
 		this.more_telephones = more_telephones;
 	}
-	public String getNickname() {
+/*	public String getNickname() {
 		return nickname;
 	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-
+*/
 	public String getTelephone_international() {
 		return telephone_international;
 	}
