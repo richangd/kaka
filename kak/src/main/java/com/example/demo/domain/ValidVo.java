@@ -1,5 +1,7 @@
 package com.example.demo.domain;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +20,19 @@ public class ValidVo {
 	private Object contents;
 	
 	
+	public ValidVo(int i, String st, int j, int k, int l, int m, int n, boolean b, boolean c, List ct) {
+		this._code = i;
+		this._message = st;
+		this.total_pages = j;
+		this.total_elements = k;
+		this.size = l;
+		this.number = m;
+		this.number_of_elements = n;
+		this.is_last = b;
+		this.is_first = c;
+		this.contents = ct;
+	}
+	
 	public ValidVo(int i, String st, int j, int k, int l, int m, int n, boolean b, boolean c, Content ct) {
 		this._code = i;
 		this._message = st;
@@ -30,6 +45,7 @@ public class ValidVo {
 		this.is_first = c;
 		this.contents = ct;
 	}
+	
 	public ValidVo() {
 		// TODO Auto-generated constructor stub
 	}
