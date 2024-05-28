@@ -122,7 +122,7 @@ public class apiController {
 		List<Content> ct = new ArrayList();
 		
 		
-		ct.add(new Content("REGISTERED", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph));
+		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph));
 		
 		g1 = "관리자";
 		g2 = "10377788";
@@ -130,7 +130,7 @@ public class apiController {
 		
 		li = new String[]{g1, g2, g3};
 		
-		ct.add(new Content("REGISTERED", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph));
+		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph));
 		
 		Integer num = Val.getPage_number();
     	
