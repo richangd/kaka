@@ -62,8 +62,8 @@ public class apiController {
         }else {
         	String g1 = "agent";
     		String g2 = "user";
-    		String g3 = "Login";
-    		String g4 = "orgUnit";
+    		String g3 = "login";
+    		String g4 = "orgunit";
     		
         	ag = new agentVo(200, "ok", new String[]{g1,g2,g3,g4});
         }
