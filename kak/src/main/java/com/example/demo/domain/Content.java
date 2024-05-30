@@ -13,11 +13,15 @@ public class Content {
 	private String name;
 	private String nickname;
 	private String email;
-	private String email_verifiacation;
+	private String email_verification;
 	private String telephone_international;
 	private String telephone_for_display;
 	private String telephone_verification;
 	private Object more_telephones;
+	private String birthday;
+	private String gender;
+	private boolean is_lunar;
+	private String photo_url;
 	
 	
 	
@@ -27,18 +31,22 @@ public class Content {
 	}
 	
 	public Content(String st, String[] li, String st2, String st3, String st4, String st5,
-			String st6, String st7, String st8, more_telephones ph) {
+			String st6, String st7, String st8, more_telephones ph, String st9, String st10, boolean st11, String st12) {
 		
 		this.status = st;
 		this.identifiers = li;
 		this.name = st2;
 		this.nickname = st3;
 		this.email = st4;
-		this.email_verifiacation = st5;
+		this.email_verification = st5;
 		this.telephone_international = st6;
 		this.telephone_for_display = st7;
 		this.telephone_verification = st8;
 		this.more_telephones = ph;
+		this.birthday = st9;
+		this.gender = st10;
+		this.is_lunar = st11;
+		this.photo_url = st12;
 	}
 
 	public String getStatus() {
@@ -68,10 +76,10 @@ public class Content {
 		this.email = email;
 	}
 	public String getEmail_verifiacation() {
-		return email_verifiacation;
+		return email_verification;
 	}
 	public void setEmail_verifiacation(String email_verifiacation) {
-		this.email_verifiacation = email_verifiacation;
+		this.email_verification = email_verifiacation;
 	}
 	public Object getMore_telephones() {
 		return more_telephones;
@@ -113,6 +121,46 @@ public class Content {
 
 	public void setMore_telephones(Object more_telephones) {
 		this.more_telephones = more_telephones;
+	}
+
+	public String getEmail_verification() {
+		return email_verification;
+	}
+
+	public void setEmail_verification(String email_verification) {
+		this.email_verification = email_verification;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public boolean isIs_lunar() {
+		return is_lunar;
+	}
+
+	public void setIs_lunar(boolean is_lunar) {
+		this.is_lunar = is_lunar;
+	}
+
+	public String getPhoto_url() {
+		return photo_url;
+	}
+
+	public void setPhoto_url(String photo_url) {
+		this.photo_url = photo_url;
 	}
 	
 	

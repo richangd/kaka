@@ -114,15 +114,16 @@ public class apiController {
 		ValidVo va = new ValidVo();
 		
 		more_telephones ph =  new more_telephones();
-		String g1 = "김창범";
+		String g1 = "test.kim";
 		String g2 = "10405312";
 		String g3 = "Kim.Changbeom@kr.canon";
 		
 		String[] li = new String[]{g1, g2, g3};
 		List<Content> ct = new ArrayList();
 		
+		ph = new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY");
 		
-		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph));
+		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, ""));
 		
 		g1 = "관리자";
 		g2 = "10377788";
@@ -130,14 +131,14 @@ public class apiController {
 		
 		li = new String[]{g1, g2, g3};
 		
-		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph));
+		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대폰", "TO_VERIFY", ph, "01-01", "male", false, ""));
 		
 		Integer num = Val.getPage_number();
     	
 		if (OrgLoginType == null || num <= 0) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok", 3, 1111, 500, 2, 111, false, false ,ct);
+        	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
         }
     	
     	
@@ -158,7 +159,7 @@ public class apiController {
 		String[] li = new String[]{g1, g2, g3};		
 		
 		
-		Content ct = new Content("REGISTERED", li ,"테스트", "테스트", "test.kim@dktechin.com", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph);
+		Content ct = new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, "");
     	
 		String tm = Chu.getBasis_time();
 		Integer num = Chu.getPage_number();
