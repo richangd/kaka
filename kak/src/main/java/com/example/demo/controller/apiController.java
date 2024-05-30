@@ -113,11 +113,12 @@ public class apiController {
 	public String getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
 		
 		String val;
+		/*
 		Integer num = Val.getPage_number();
 		
 		if (OrgLoginType == null || num <= 0) {
             throw new MissingRequiredHeaderException("The required header is missing.");
-        }else {
+        }else {*/
         	val = "{"
     				+ "  \"_code\": 200,"
     				+ "\"_message\": \"ok\","
@@ -183,7 +184,7 @@ public class apiController {
     				+ "  ]"
     				+ "}"
     				+ "";
-        }
+   //     }
     	
     	
         return val;
