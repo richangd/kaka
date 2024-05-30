@@ -108,10 +108,9 @@ public class apiController {
     	    	
         return re;
     }    
-    /*
+    
 	@GetMapping("/user/v0/getValidUsers")
-	public String getValidUsers() {
-			
+	public String getValidUsers() {			
     	
         return "{"
 				+ "  \"_code\": 200,"
@@ -180,10 +179,9 @@ public class apiController {
 				+ "";
 	}
 		
-	*/	
 		
 	
-
+/*
 	@GetMapping("/user/v0/getValidUsers")
 	public ValidVo getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
