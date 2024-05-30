@@ -126,15 +126,18 @@ public class apiController {
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
 		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "MALE", false, ""));
-		/*
+		
 		g1 = "관리자";
 		g2 = "10377788";
 		g3 = "sdmail@kr.canon";
 		
 		li = new String[]{g1, g2, g3};
 		
-		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대폰", "TO_VERIFY", ph, "01-01", "male", false, ""));
-		*/
+		ph.clear();
+		ph.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
+		
+		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", ph, "01-01", "FEMALE", false, ""));
+		
 		Integer num = Val.getPage_number();
     	
 		if (OrgLoginType == null || num <= 0) {
