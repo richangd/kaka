@@ -31,7 +31,7 @@ public class Content {
 	}
 	
 	public Content(String st, String[] li, String st2, String st3, String st4, String st5,
-			String st6, String st7, String st8, more_telephones ph, String st9, String st10, boolean st11, String st12) {
+			String st6, String st7, String st8, List ph, String st9, String st10, boolean st11, String st12) {
 		
 		this.status = st;
 		this.identifiers = li;
@@ -52,47 +52,49 @@ public class Content {
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public String[] getIdentifiers() {
-		
-		return identifiers =  identifiers;
-		
+		return identifiers;
 	}
+
 	public void setIdentifiers(String[] identifiers) {
 		this.identifiers = identifiers;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getEmail_verifiacation() {
-		return email_verification;
-	}
-	public void setEmail_verifiacation(String email_verifiacation) {
-		this.email_verification = email_verifiacation;
-	}
-	public Object getMore_telephones() {
-		return more_telephones;
-	}
-	public void setMore_telephones(Object[] more_telephones) {
-		this.more_telephones = more_telephones;
-	}
+
 	public String getNickname() {
 		return nickname;
 	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail_verification() {
+		return email_verification;
+	}
+
+	public void setEmail_verification(String email_verification) {
+		this.email_verification = email_verification;
 	}
 
 	public String getTelephone_international() {
@@ -119,16 +121,12 @@ public class Content {
 		this.telephone_verification = telephone_verification;
 	}
 
+	public Object getMore_telephones() {
+		return more_telephones;
+	}
+
 	public void setMore_telephones(Object more_telephones) {
 		this.more_telephones = more_telephones;
-	}
-
-	public String getEmail_verification() {
-		return email_verification;
-	}
-
-	public void setEmail_verification(String email_verification) {
-		this.email_verification = email_verification;
 	}
 
 	public String getBirthday() {
@@ -162,6 +160,7 @@ public class Content {
 	public void setPhoto_url(String photo_url) {
 		this.photo_url = photo_url;
 	}
-	
+
+
 	
 }
