@@ -7,7 +7,7 @@ public class more_telephones {
 	private String number;
 	
 	public String getType() {
-		return "MOBILE";
+		return "IPT";
 	}
 	public void setType(String type) {
 		this.type = type;
