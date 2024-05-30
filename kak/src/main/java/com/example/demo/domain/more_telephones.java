@@ -5,7 +5,7 @@ public class more_telephones {
 	private String type;
 	private String international;
 	private String display;
-	private String verification;
+	private String verification;	
 	
 	public more_telephones(String st, String st1, String st2, String st3) {
 		this.type = st;
@@ -16,7 +16,7 @@ public class more_telephones {
 	
 	public more_telephones() {
 		// TODO Auto-generated constructor stub
-	}
+	}	
 
 	public String getType() {
 		return type;

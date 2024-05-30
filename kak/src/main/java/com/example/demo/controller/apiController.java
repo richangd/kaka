@@ -35,6 +35,7 @@ import com.example.demo.domain.agentVo;
 import com.example.demo.domain.editability;
 import com.example.demo.domain.idreturn;
 import com.example.demo.domain.more_telephones;
+import com.example.demo.domain.more_telephones1;
 import com.example.demo.domain.synchronize_options;
 import com.example.demo.domain.telephones;
 import com.example.demo.exeption.MissingRequiredHeaderException;
@@ -120,6 +121,7 @@ public class apiController {
 		
 		String[] li = new String[]{g1, g2, g3};
 		List<Content> ct = new ArrayList();
+		List mo = new ArrayList();
 		
 		List<more_telephones> ph = new ArrayList();
 		
@@ -131,12 +133,12 @@ public class apiController {
 		g2 = "10377788";
 		g3 = "sdmail@kr.canon";
 		
-		li = new String[]{g1, g2, g3};
+		li = new String[]{g1, g2, g3};		
 		
-		ph.clear();
-		ph.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
+		mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
+		mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
 		
-		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", ph, "01-01", "FEMALE", false, ""));
+		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", mo, "01-01", "FEMALE", false, ""));
 		
 		Integer num = Val.getPage_number();
     	
