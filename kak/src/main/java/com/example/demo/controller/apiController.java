@@ -109,7 +109,7 @@ public class apiController {
         return re;
     }    
     
-	@GetMapping("/user/v0/getValidUsers")
+	@GetMapping("/user/v0/getValidUsers1")
 	public String getValidUsers() {			
     	
         return "{"
@@ -182,7 +182,7 @@ public class apiController {
 		
 	
 
-	@GetMapping("/user/v0/getValidUsers1")
+	@GetMapping("/user/v0/getValidUsers")
 	public ValidVo getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		ValidVo va = new ValidVo();
