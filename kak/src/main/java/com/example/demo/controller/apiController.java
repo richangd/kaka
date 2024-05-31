@@ -109,7 +109,7 @@ public class apiController {
         return re;
     }    
     
-	@GetMapping("/user/v0/getValidUsers1")
+	@GetMapping("/user/v0/getValidUsers")
 	public String getValidUsers() {			
     	
         return "{"
@@ -139,7 +139,7 @@ public class apiController {
 				+ "          \"international\": \"+82 10-1111-2222\","
 				+ "          \"display\": \"010-1111-2222\","
 				+ "          \"verification\": \"TOVERIFY\""
-				+ "        },"
+				+ "        }"
 				+ "      ],"
 				+ "      \"birthday\": \"01-01\","
 				+ "      \"gender\": \"MALE\","
@@ -167,7 +167,7 @@ public class apiController {
 				+ "          \"type\": \"IPT\","
 				+ "          \"display\": \"개발 2팀\","
 				+ "          \"number\": \"987654321\""
-				+ "        },"
+				+ "        }"
 				+ "      ],"
 				+ "      \"birthday\": \"01-01\","
 				+ "      \"gender\": \"FEMALE\","
@@ -182,7 +182,7 @@ public class apiController {
 		
 	
 
-	@GetMapping("/user/v0/getValidUsers")
+	@GetMapping("/user/v0/getValidUsers1")
 	public ValidVo getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		ValidVo va = new ValidVo();
