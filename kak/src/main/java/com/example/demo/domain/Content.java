@@ -17,7 +17,7 @@ public class Content {
 	private String telephone_international;
 	private String telephone_for_display;
 	private String telephone_verification;
-	private Object more_telephones;
+	private Object[] more_telephones;
 	private String birthday;
 	private String gender;
 	private boolean is_lunar;
@@ -26,10 +26,8 @@ public class Content {
 	
 	
 	
-	public Content(more_telephones ph) {
-		this.more_telephones = ph;
-	}
 	
+	/*
 	public Content(String st, String[] li, String st2, String st3, String st4, String st5,
 			String st6, String st7, String st8, List ph, String st9, String st10, boolean st11, String st12) {
 		
@@ -43,6 +41,24 @@ public class Content {
 		this.telephone_for_display = st7;
 		this.telephone_verification = st8;
 		this.more_telephones = ph;
+		this.birthday = st9;
+		this.gender = st10;
+		this.is_lunar = st11;
+		this.photo_url = st12;
+	}
+*/
+	public Content(String st, String[] li, String st2, String st3, String st4, String st5, String st6, String st7,
+			String st8, Object[] dt, String st9, String st10, boolean st11, String st12) {
+		this.status = st;
+		this.identifiers = li;
+		this.name = st2;
+		this.nickname = st3;
+		this.email = st4;
+		this.email_verification = st5;
+		this.telephone_international = st6;
+		this.telephone_for_display = st7;
+		this.telephone_verification = st8;
+		this.more_telephones = dt;
 		this.birthday = st9;
 		this.gender = st10;
 		this.is_lunar = st11;
@@ -125,7 +141,7 @@ public class Content {
 		return more_telephones;
 	}
 
-	public void setMore_telephones(Object more_telephones) {
+	public void setMore_telephones(Object[] more_telephones) {
 		this.more_telephones = more_telephones;
 	}
 
