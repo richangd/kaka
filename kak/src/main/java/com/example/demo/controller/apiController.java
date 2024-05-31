@@ -200,12 +200,7 @@ public class apiController {
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
-		Object[] dt = new Object[1];
-		
-		dt[0] = ph;		
-		
-		
-		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", dt, "01-01", "MALE", false, ""));
+		ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "MALE", false, ""));
 		
 		g1 = "관리자";
 		g2 = "10377788";
@@ -216,9 +211,7 @@ public class apiController {
 		mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
 		mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
 		
-		dt[0] = mo;
-		
-		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", dt, "01-01", "FEMALE", false, ""));
+		ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", mo, "01-01", "FEMALE", false, ""));
 		
 		Integer num = Val.getPage_number();
     	
