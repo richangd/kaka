@@ -202,7 +202,7 @@ public class apiController {
 		
 		ct.add(new Content("ACTIVE", li ,"test", "test", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678", "TO_VERIFY", ph, "01-01", "MALE", false, ""));
 		
-		g1 = "관리자";
+		g1 = "admin";
 		g2 = "10377788";
 		g3 = "sdmail@kr.canon";
 		
