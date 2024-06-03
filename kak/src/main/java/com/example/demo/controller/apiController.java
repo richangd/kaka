@@ -284,13 +284,13 @@ public class apiController {
 		ValidunitVo va = new ValidunitVo();
 		List<VaContent> co = new ArrayList();
 		
-		co.add(new VaContent("ACTIVE", "조직코드", "조직명", "상위 조직 코드", false, 1));
+		co.add(new VaContent("ACTIVE", "21", "카카오게임즈", "#", false, 0));
 		
 		
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidunitVo(200, "ok", 10, 10, 2, 1, 2, false, false, co);
+        	va = new ValidunitVo(200, "ok", 12, 5555, 500, 2, 500, false, false, co);
         }    	
     	
         return va;
