@@ -39,6 +39,9 @@ import com.example.demo.domain.more_telephones1;
 import com.example.demo.domain.synchronize_options;
 import com.example.demo.domain.telephones;
 import com.example.demo.exeption.MissingRequiredHeaderException;
+import com.example.demo.orgunits.domain.ResponsContent;
+import com.example.demo.orgunits.domain.ResponsibilIo;
+import com.example.demo.orgunits.domain.ResponsibilVo;
 import com.example.demo.orgunits.domain.VaContent;
 import com.example.demo.orgunits.domain.ValidunitIo;
 import com.example.demo.orgunits.domain.ValidunitVo;
@@ -277,7 +280,7 @@ public class apiController {
         return va;
     }
 	
-	
+	/*
 	@GetMapping("/orgunit/v0/getValidOrgunits")
 	public String getValidOrgunits() {
 		
@@ -311,8 +314,8 @@ public class apiController {
 				+ "]"
 				+ "}";
 	}
+	*/
 	
-	/*
 	@GetMapping("/orgunit/v0/getValidOrgunits")
     public ValidunitVo getValidOrgunits(@RequestBody ValidunitIo Io, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
@@ -321,6 +324,7 @@ public class apiController {
 		List<VaContent> co = new ArrayList();
 		
 		co.add(new VaContent("ACTIVE", "21", "카카오게임즈", "#", false, 0));
+		co.add(new VaContent("ACTIVE", "GMS00000045", "카카오게임즈", "#", false, 0));
 		
 		
 		if (OrgLoginType == null) {
@@ -331,22 +335,25 @@ public class apiController {
     	
         return va;
     }
-	*/
+	
 	@GetMapping("/orgunit/v0/getResponsibilities")
-    public ValidVo getResponsibilities(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public ResponsibilVo getResponsibilities(@RequestBody ResponsibilIo Re, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
-		ValidVo va = new ValidVo();
+		ResponsibilVo Rev = new ResponsibilVo();
+		List<ResponsContent> rco = new ArrayList();
 		
+		rco.add(new ResponsContent("1", 1, "대표이사"));
+		rco.add(new ResponsContent("2", 2, "실장"));
 		
 		
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	
+        	Rev = new ResponsibilVo(200, "ok", 12, 5555, 500, 2, 500, false, false, rco);
         }    	
     	
-        return va;
+        return Rev;
     }
 	
 	@GetMapping("/orgunit/v0/getPositions")
