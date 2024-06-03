@@ -39,6 +39,9 @@ import com.example.demo.domain.more_telephones1;
 import com.example.demo.domain.synchronize_options;
 import com.example.demo.domain.telephones;
 import com.example.demo.exeption.MissingRequiredHeaderException;
+import com.example.demo.orgunits.domain.VaContent;
+import com.example.demo.orgunits.domain.ValidunitIo;
+import com.example.demo.orgunits.domain.ValidunitVo;
 
 
 @RestController
@@ -66,7 +69,7 @@ public class apiController {
     		String g3 = "login";
     		String g4 = "orgunit";
     		
-        	ag = new agentVo(200, "ok", new String[]{g1,g2});
+        	ag = new agentVo(200, "ok", new String[]{g3,g4});
         }
     	
         return ag;
@@ -253,5 +256,78 @@ public class apiController {
         return va;
     }
 */
+	/* 조직도 관련 API
+	 * 
+	 * */
+	
+	@GetMapping("/orgunit/v0/getChangedOrgunits")
+    public ValidVo getChangedOrgunits(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+        
+		
+		ValidVo va = new ValidVo();
+		
+		
+		
+		if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	
+        }    	
+    	
+        return va;
+    }
+	
+	@GetMapping("/orgunit/v0/getValidOrgunits")
+    public ValidunitVo getValidOrgunits(@RequestBody ValidunitIo Io, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+        
+		
+		ValidunitVo va = new ValidunitVo();
+		List<VaContent> co = new ArrayList();
+		
+		co.add(new VaContent("ACTIVE", "조직코드", "조직명", "상위 조직 코드", false, 1));
+		
+		
+		if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	va = new ValidunitVo(200, "ok", 10, 10, 2, 1, 2, false, false, co);
+        }    	
+    	
+        return va;
+    }
+	
+	@GetMapping("/orgunit/v0/getResponsibilities")
+    public ValidVo getResponsibilities(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+        
+		
+		ValidVo va = new ValidVo();
+		
+		
+		
+		if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	
+        }    	
+    	
+        return va;
+    }
+	
+	@GetMapping("/orgunit/v0/getPositions")
+    public ValidVo getPositions(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+        
+		
+		ValidVo va = new ValidVo();
+		
+		
+		
+		if (OrgLoginType == null) {
+            throw new MissingRequiredHeaderException("The required header is missing.");
+        }else {
+        	
+        }    	
+    	
+        return va;
+    }
 }
 
