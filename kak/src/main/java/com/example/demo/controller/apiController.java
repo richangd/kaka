@@ -277,6 +277,42 @@ public class apiController {
         return va;
     }
 	
+	
+	@GetMapping("/orgunit/v0/getValidOrgunits")
+	public String getValidOrgunits() {
+		
+		
+		return "\"_code\": 200,"
+				+ "\"_message\": \"ok\","
+				+ "\"total_pages\": 12,"
+				+ "\"total_elements\": 5555,"
+				+ "\"size\": 500,"
+				+ "\"number\": 2,"
+				+ "\"number_of_elements\": 500,"
+				+ "\"is_last\": false,"
+				+ "\"is_first\": false,"
+				+ "\"contents\": ["
+				+ " {"
+				+ "\"status\": \"ACTIVE\","
+				+ "\"code\": \"21\","
+				+ "\"name\": \"카카오게임즈\","
+				+ "\"parent_code\": \"#\","
+				+ "\"is_private\": false,"
+				+ "\"order\": 0"
+				+ " },"
+				+ "{\r\n"
+				+ "\"status\": \"ACTIVE\","
+				+ "\"code\": \"GMS00000045\","
+				+ "\"name\": \"캐주얼&광고사업본부\","
+				+ "\"parent_code\": \"GMS00000159\","
+				+ " \"is_private\": false,"
+				+ " \"order\": 3"
+				+ " }"
+				+ "]"
+				+ "}";
+	}
+	
+	/*
 	@GetMapping("/orgunit/v0/getValidOrgunits")
     public ValidunitVo getValidOrgunits(@RequestBody ValidunitIo Io, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
@@ -295,7 +331,7 @@ public class apiController {
     	
         return va;
     }
-	
+	*/
 	@GetMapping("/orgunit/v0/getResponsibilities")
     public ValidVo getResponsibilities(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
