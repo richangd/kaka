@@ -280,12 +280,13 @@ public class apiController {
         return va;
     }
 	
-	/*
+	
 	@GetMapping("/orgunit/v0/getValidOrgunits")
 	public String getValidOrgunits() {
 		
 		
-		return "\"_code\": 200,"
+		return "{"
+				+ "\"_code\": 200,"
 				+ "\"_message\": \"ok\","
 				+ "\"total_pages\": 12,"
 				+ "\"total_elements\": 5555,"
@@ -314,8 +315,8 @@ public class apiController {
 				+ "]"
 				+ "}";
 	}
-	*/
 	
+	/*
 	@GetMapping("/orgunit/v0/getValidOrgunits")
     public ValidunitVo getValidOrgunits(@RequestBody ValidunitIo Io, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
@@ -335,7 +336,32 @@ public class apiController {
     	
         return va;
     }
+	*/
+	@GetMapping("/orgunit/v0/getResponsibilities")
+	public String getResponsibilities() {
+		
+		return "{"
+				+ "\"_code\": 200,"
+				+ " \"_message\": \"ok\","
+				+ "\"total_pages\": 12,"
+				+ "\"total_elements\": 5555,"
+				+ "\"size\": 500,"
+				+ "\"number\": 2,"
+				+ "\"number_of_elements\": 500,"
+				+ "\"is_last\": false,"
+				+ "\"is_first\": false,"
+				+ "\"contents\": ["
+				+ "  {"
+				+ "  \"code\": \"1\","
+				+ "\"level\": 1,"
+				+ "\"name\": \"대표이사\""
+				+ "}"
+				+ "   ]"
+				+ "}";
+	}
 	
+	
+	/*
 	@GetMapping("/orgunit/v0/getResponsibilities")
     public ResponsibilVo getResponsibilities(@RequestBody ResponsibilIo Re, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
@@ -355,7 +381,7 @@ public class apiController {
     	
         return Rev;
     }
-	
+	*/
 	@GetMapping("/orgunit/v0/getPositions")
     public ValidVo getPositions(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
