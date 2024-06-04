@@ -169,7 +169,7 @@ public class apiController {
 			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
 	        }else {
-	        	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
+	        	va = new ValidVo(200, "ok", 1, 4, 10, 1, 10, false, true, ct);
 	        }
 	    	
 	    	ObjectMapper objectMapper = new ObjectMapper();
@@ -203,12 +203,12 @@ public class apiController {
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
 		
-		ct.add(new Content("REGISTERED", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, ""));    	
+		ct.add(new Content("UPDATED", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, ""));    	
 		
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok", 3, 1111, 500, 3, 111, true, false ,ct);
+        	va = new ValidVo(200, "ok", 1, 4, 10, 1, 10, true, false ,ct);
         }    	
 		
 		
