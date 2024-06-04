@@ -188,7 +188,7 @@ public class apiController {
 				+ "";
 	}
 		
-	 @GetMapping("/user/v0/getValidUsers1")
+	 @GetMapping("/user/v0/getValidUsers")
 	 public String getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
 	    	agentVo ag = new agentVo();
 	    	String jsonString = null;
