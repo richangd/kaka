@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.domain.Agent;
 import com.example.demo.domain.ChangedUser;
 import com.example.demo.domain.Content;
+import com.example.demo.domain.Content1;
 import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
 import com.example.demo.domain.Param;
@@ -140,19 +141,19 @@ public class apiController {
 	    	String jsonString = null;
 	    	ValidVo va = new ValidVo();
 			
-			String g1 = "test.kim";
+			String g1 = "김창범";
 			String g2 = "10405312";
 			String g3 = "Kim.Changbeom@kr.canon";
 			
 			String[] li = new String[]{g1, g2, g3};
-			List<Content> ct = new ArrayList();
+			List<Content1> ct = new ArrayList();
 			List mo = new ArrayList();
 			
 			List<more_telephones> ph = new ArrayList();
 			
 			ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 			
-			ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "MALE", false, ""));
+			ct.add(new Content1("ACTIVE", li ,"김창범"));
 			
 			g1 = "관리자";
 			g2 = "10377788";
@@ -163,7 +164,7 @@ public class apiController {
 			mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
 			mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
 			
-			ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", mo, "01-01", "FEMALE", false, ""));
+			ct.add(new Content1("ACTIVE", li ,"관리자"));
 			
 	    	
 			if (OrgLoginType == null) {
