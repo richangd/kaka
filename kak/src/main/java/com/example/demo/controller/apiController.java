@@ -189,7 +189,7 @@ public class apiController {
 	}
 		
 	 @GetMapping("/user/v0/getValidUsers")
-	 public String getAgentCapabilit(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	 public String getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
 	    	agentVo ag = new agentVo();
 	    	String jsonString = null;
 	    	
@@ -231,9 +231,8 @@ public class apiController {
 			
 			ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", mo, "01-01", "FEMALE", false, ""));
 			
-			Integer num = Val.getPage_number();
-			
-			if (OrgLoginType == null || num <= 0) {
+	    	
+			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
 	        }else {
 	        	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
