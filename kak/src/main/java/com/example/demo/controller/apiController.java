@@ -214,7 +214,7 @@ public class apiController {
 	 * */
 	
 	@GetMapping("/orgunit/v0/getChangedOrgunits")
-    public ValidVo getChangedOrgunits(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public ValidVo getChangedOrgunits(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ValidVo va = new ValidVo();
@@ -263,7 +263,7 @@ public class apiController {
     }	
 	
 	@GetMapping("/orgunit/v0/getResponsibilities")
-    public String getResponsibilities(@RequestBody ResponsibilIo Re, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getResponsibilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ResponsibilVo Rev = new ResponsibilVo();
@@ -296,7 +296,7 @@ public class apiController {
     }
 	
 	@GetMapping("/orgunit/v0/getPositions")
-    public ValidVo getPositions(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public ValidVo getPositions(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ValidVo va = new ValidVo();
