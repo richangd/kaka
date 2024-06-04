@@ -65,7 +65,7 @@ public class apiController {
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
-    public String getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
     	agentVo ag = new agentVo();
     	
     	if (OrgLoginType == null) {
@@ -78,16 +78,7 @@ public class apiController {
     		
         	ag = new agentVo(200, "ok", new String[]{g1, g2});
         }
-    	
-    	ObjectMapper objectMapper = new ObjectMapper();
-		String jsonString = null;
-        try {
-            // 객체를 JSON 문자열로 변환
-            jsonString = objectMapper.writeValueAsString(ag);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return jsonString;
+        return ag;
     }    
     
     @GetMapping("/user/v0/getUserMetadata")
@@ -197,11 +188,70 @@ public class apiController {
 				+ "";
 	}
 		
-		
+	 @GetMapping("/user/v0/getValidUsers1")
+	 public String getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	    	agentVo ag = new agentVo();
+	    	String jsonString = null;
+	    	
+	    	if (OrgLoginType == null) {
+	            throw new MissingRequiredHeaderException("The required header is missing.");
+	        }else {
+	        	String g1 = "agent";
+	    		String g2 = "user";
+	    		String g3 = "login";
+	    		String g4 = "orgunit";
+	    		
+	        	ag = new agentVo(200, "ok", new String[]{g1, g2});
+	        }
+	    	
+	    	ValidVo va = new ValidVo();
+			
+			String g1 = "test.kim";
+			String g2 = "10405312";
+			String g3 = "Kim.Changbeom@kr.canon";
+			
+			String[] li = new String[]{g1, g2, g3};
+			List<Content> ct = new ArrayList();
+			List mo = new ArrayList();
+			
+			List<more_telephones> ph = new ArrayList();
+			
+			ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
+			
+			ct.add(new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "MALE", false, ""));
+			
+			g1 = "관리자";
+			g2 = "10377788";
+			g3 = "sdmail@kr.canon";
+			
+			li = new String[]{g1, g2, g3};
+			
+			mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
+			mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
+			
+			ct.add(new Content("ACTIVE", li ,"관리자", "admin_canon", "sdmail@kr.canon", "TO_VERIFY", "+82 10-8765-4321", "010-8765-4321 휴대용", "TO_VERIFY", mo, "01-01", "FEMALE", false, ""));
+			
+	    	
+			if (OrgLoginType == null) {
+	            throw new MissingRequiredHeaderException("The required header is missing.");
+	        }else {
+	        	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
+	        }
+	    	
+	    	ObjectMapper objectMapper = new ObjectMapper();
+			
+	        try {
+	            // 객체를 JSON 문자열로 변환
+	            jsonString = objectMapper.writeValueAsString(va);
+	        } catch (JsonProcessingException e) {
+	            e.printStackTrace();
+	        }
+	        return jsonString;
+	    }	
 	
 
-	@GetMapping("/user/v0/getValidUsers")
-	public String getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	@GetMapping("/user/v0/getValidUsers12")
+	public String getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) throws JsonProcessingException {
         
 		ValidVo va = new ValidVo();
 		String jsonString = null;
@@ -238,18 +288,13 @@ public class apiController {
         }else {
         	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
         }
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		
-        try {
-            // 객체를 JSON 문자열로 변환
-            jsonString = objectMapper.writeValueAsString(va);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        Gson gson = new Gson();
-        String val = gson.toJson(va);
-        return val;
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String result = objectMapper.writeValueAsString(va);
+        
+        
+        return jsonString;
     }
 	/*
 	@GetMapping("/user/v0/getChangedUsers")
