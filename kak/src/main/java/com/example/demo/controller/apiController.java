@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,7 +65,7 @@ public class apiController {
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
-    public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
     	agentVo ag = new agentVo();
     	
     	if (OrgLoginType == null) {
@@ -78,7 +79,15 @@ public class apiController {
         	ag = new agentVo(200, "ok", new String[]{g2});
         }
     	
-        return ag;
+    	ObjectMapper objectMapper = new ObjectMapper();
+		String jsonString = null;
+        try {
+            // 객체를 JSON 문자열로 변환
+            jsonString = objectMapper.writeValueAsString(ag);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
     }    
     
     @GetMapping("/user/v0/getUserMetadata")
@@ -231,17 +240,16 @@ public class apiController {
         }
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-
+		
         try {
             // 객체를 JSON 문자열로 변환
             jsonString = objectMapper.writeValueAsString(va);
-            System.out.println(jsonString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-    	
-    	
-        return jsonString;
+        Gson gson = new Gson();
+        String val = gson.toJson(va);
+        return val;
     }
 	/*
 	@GetMapping("/user/v0/getChangedUsers")
