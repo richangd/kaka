@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -72,7 +75,7 @@ public class apiController {
     		String g3 = "login";
     		String g4 = "orgunit";
     		
-        	ag = new agentVo(200, "ok", new String[]{g3,g4});
+        	ag = new agentVo(200, "ok", new String[]{g2});
         }
     	
         return ag;
@@ -189,10 +192,10 @@ public class apiController {
 	
 
 	@GetMapping("/user/v0/getValidUsers")
-	public ValidVo getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	public String getValidUsers(@RequestBody Valid Val, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		ValidVo va = new ValidVo();
-		
+		String jsonString = null;
 		
 		String g1 = "test.kim";
 		String g2 = "10405312";
@@ -226,9 +229,19 @@ public class apiController {
         }else {
         	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
         }
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            // 객체를 JSON 문자열로 변환
+            jsonString = objectMapper.writeValueAsString(va);
+            System.out.println(jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     	
     	
-        return va;
+        return jsonString;
     }
 	/*
 	@GetMapping("/user/v0/getChangedUsers")
@@ -361,8 +374,8 @@ public class apiController {
 	}
 	
 	
-	/*
-	@GetMapping("/orgunit/v0/getResponsibilities")
+	
+	@GetMapping("/orgunit/v0/getResponsibilities1")
     public ResponsibilVo getResponsibilities(@RequestBody ResponsibilIo Re, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
@@ -381,7 +394,7 @@ public class apiController {
     	
         return Rev;
     }
-	*/
+	
 	@GetMapping("/orgunit/v0/getPositions")
     public ValidVo getPositions(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
