@@ -166,6 +166,19 @@ public class apiController {
 			
 			ct.add(new Content1("ACTIVE", li ,"관리자"));
 			
+			g1 = "김대진";
+			g2 = "10405313";
+			g3 = "Kim.DaeJin@kr.canon";
+			
+			li = new String[]{g1, g2, g3};
+			ct.add(new Content1("ACTIVE", li ,"관리자"));
+			
+			g1 = "박응수";
+			g2 = "10414705";
+			g3 = "espark@kr.canon";
+			
+			li = new String[]{g1, g2, g3};
+			ct.add(new Content1("ACTIVE", li ,"관리자"));
 	    	
 			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
