@@ -20,37 +20,38 @@ public class idreturn {
 	}
 
 	public String getResult() {
-		return this.result = "SUCCESS";
+		return result;
 	}
 
 	public void setResult(String result) {
-		this.result = "SUCCESS";
+		this.result = result;
 	}
 
 	public String getReason() {
-		return this.result = "AUTH_SUCCESS";
+		return reason;
 	}
 
 	public void setReason(String reason) {
-		this.reason = "AUTH_SUCCESS";
+		this.reason = reason;
 	}
 
 	public int get_code() {
-		return this._code =  200;
+		return _code;
 	}
 
 	public void set_code(int _code) {
-		this._code = 200;
+		this._code = _code;
 	}
 
 	public String get_message() {
-		return this._message = "OK";
+		return _message;
 	}
 
 	public void set_message(String _message) {
-		this._message = "OK";
+		this._message = _message;
 	}
-	
+
+
 	
 	
 	
