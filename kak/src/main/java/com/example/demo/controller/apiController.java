@@ -43,6 +43,8 @@ import com.example.demo.domain.more_telephones1;
 import com.example.demo.domain.synchronize_options;
 import com.example.demo.domain.telephones;
 import com.example.demo.exeption.MissingRequiredHeaderException;
+import com.example.demo.orgunits.domain.ChangeOrgContent;
+import com.example.demo.orgunits.domain.ChangeOrgVo;
 import com.example.demo.orgunits.domain.ResponsContent;
 import com.example.demo.orgunits.domain.ResponsibilIo;
 import com.example.demo.orgunits.domain.ResponsibilVo;
@@ -214,20 +216,33 @@ public class apiController {
 	 * */
 	
 	@GetMapping("/orgunit/v0/getChangedOrgunits")
-    public ValidVo getChangedOrgunits(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getChangedOrgunits(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+		String jsonString =null;
+		ChangeOrgVo chorg = new ChangeOrgVo();
+		List<ChangeOrgContent> chorgco = new ArrayList();
 		
-		ValidVo va = new ValidVo();
-		
+		chorgco.add(new ChangeOrgContent("REGISTERED", "sol", "솔루션개발담당", "S개발팀", false, 0));
+		chorgco.add(new ChangeOrgContent("UPDATED", "MTSM", "MTS마케팅", "MTS", false, 0));
 		
 		
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	
+        	chorg = new ChangeOrgVo(200, "ok", 12, 5555, 500, 2, 500, false, false, chorgco);
         }    	
     	
-        return va;
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+        
+		try {
+            // 객체를 JSON 문자열로 변환
+            jsonString  = objectMapper.writeValueAsString(chorg);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    	
+        return jsonString;
     }
 	
 		
