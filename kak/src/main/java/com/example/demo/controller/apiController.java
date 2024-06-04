@@ -298,7 +298,7 @@ public class apiController {
     }
 	
 	@GetMapping("/user/v0/getChangedUsers")
-    public String getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public ValidVo getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ValidVo va = new ValidVo();
@@ -324,7 +324,7 @@ public class apiController {
         }else {
         	va = new ValidVo(200, "ok", 3, 1111, 500, 3, 111, true, false ,ct);
         }    	
-    	
+    	/*
 		ObjectMapper objectMapper = new ObjectMapper();
 		
         try {
@@ -335,6 +335,9 @@ public class apiController {
         }
         
         return jsonString;
+        */
+		return va;
+		
     }
 
 	/* 조직도 관련 API
