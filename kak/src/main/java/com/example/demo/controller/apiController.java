@@ -189,8 +189,8 @@ public class apiController {
 	}
 		
 	 @GetMapping("/user/v0/getValidUsers")
-	 public ValidVo getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {	    	
-	    	
+	 public String getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	    	String jsonString = null;
 	    	ValidVo va = new ValidVo();
 			
 			String g1 = "test.kim";
@@ -225,11 +225,19 @@ public class apiController {
 	        	va = new ValidVo(200, "ok", 12, 5555, 500, 1, 500, false, true, ct);
 	        }
 	    	
-			return va;
+	    	ObjectMapper objectMapper = new ObjectMapper();
+			
+	        try {
+	            // 객체를 JSON 문자열로 변환
+	            jsonString = objectMapper.writeValueAsString(va);
+	        } catch (JsonProcessingException e) {
+	            e.printStackTrace();
+	        }
+	        return jsonString;
 	    }	
 	
 	@GetMapping("/user/v0/getChangedUsers")
-    public ValidVo getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ValidVo va = new ValidVo();
@@ -256,7 +264,18 @@ public class apiController {
         	va = new ValidVo(200, "ok", 3, 1111, 500, 3, 111, true, false ,ct);
         }    	
 		
-		return va;
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+        try {
+            // 객체를 JSON 문자열로 변환
+            jsonString = objectMapper.writeValueAsString(va);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
+		
 		
     }
 
