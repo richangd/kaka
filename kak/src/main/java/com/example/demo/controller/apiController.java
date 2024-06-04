@@ -296,9 +296,9 @@ public class apiController {
         
         return jsonString;
     }
-	/*
+	
 	@GetMapping("/user/v0/getChangedUsers")
-    public ValidVo getgetChangedUsers(@RequestBody ChangedUser Chu, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public ValidVo getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ValidVo va = new ValidVo();
@@ -311,12 +311,9 @@ public class apiController {
 		String[] li = new String[]{g1, g2, g3};		
 		
 		
-		Content ct = new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, "");
-    	
-		String tm = Chu.getBasis_time();
-		Integer num = Chu.getPage_number();
+		Content ct = new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, "");    	
 		
-		if (OrgLoginType == null || tm.length() == 0 || num <= 0) {
+		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
         	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
@@ -324,7 +321,7 @@ public class apiController {
     	
         return va;
     }
-*/
+
 	/* 조직도 관련 API
 	 * 
 	 * */
