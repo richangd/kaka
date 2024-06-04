@@ -298,10 +298,11 @@ public class apiController {
     }
 	
 	@GetMapping("/user/v0/getChangedUsers")
-    public ValidVo getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ValidVo va = new ValidVo();
+		String jsonString = null;
 		
 		more_telephones ph =  new more_telephones();
 		String g1 = "김창범";
@@ -319,7 +320,16 @@ public class apiController {
         	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
         }    	
     	
-        return va;
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+        try {
+            // 객체를 JSON 문자열로 변환
+            jsonString = objectMapper.writeValueAsString(va);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
     }
 
 	/* 조직도 관련 API
