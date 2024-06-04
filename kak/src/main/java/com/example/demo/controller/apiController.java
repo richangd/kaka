@@ -68,7 +68,9 @@ public class apiController {
 	   
 	   idreturn id = new idreturn();
 	   
-	   if (OrgLoginType == null) {
+	   String pw = param.getpassword();
+	   
+	   if (OrgLoginType == null || pw != "solrnd0803!@") {
            throw new MissingRequiredHeaderException("The required header is missing.");
        }else {
     	   idreturn idreturn = new idreturn("Success", "AUTH_SUCCESS", 200, "OK");
