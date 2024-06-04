@@ -304,20 +304,25 @@ public class apiController {
 		ValidVo va = new ValidVo();
 		String jsonString = null;
 		
-		more_telephones ph =  new more_telephones();
+		
 		String g1 = "김창범";
 		String g2 = "10405312";
 		String g3 = "Kim.Changbeom@kr.canon";
 		
 		String[] li = new String[]{g1, g2, g3};		
 		
+		List<Content> ct = new ArrayList();
+		List<more_telephones> ph = new ArrayList();
 		
-		Content ct = new Content("ACTIVE", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, "");    	
+		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
+		
+		
+		ct.add(new Content("REGISTERED", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, ""));    	
 		
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok",12, 5555, 500, 2, 500, false, false ,ct);
+        	va = new ValidVo(200, "ok", 3, 1111, 500, 3, 111, true, false ,ct);
         }    	
     	
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -353,47 +358,11 @@ public class apiController {
         return va;
     }
 	
-	
-	@GetMapping("/orgunit/v0/getValidOrgunits")
-	public String getValidOrgunits() {
 		
-		
-		return "{"
-				+ "\"_code\": 200,"
-				+ "\"_message\": \"ok\","
-				+ "\"total_pages\": 12,"
-				+ "\"total_elements\": 5555,"
-				+ "\"size\": 500,"
-				+ "\"number\": 2,"
-				+ "\"number_of_elements\": 500,"
-				+ "\"is_last\": false,"
-				+ "\"is_first\": false,"
-				+ "\"contents\": ["
-				+ " {"
-				+ "\"status\": \"ACTIVE\","
-				+ "\"code\": \"21\","
-				+ "\"name\": \"카카오게임즈\","
-				+ "\"parent_code\": \"#\","
-				+ "\"is_private\": false,"
-				+ "\"order\": 0"
-				+ " },"
-				+ "{\r\n"
-				+ "\"status\": \"ACTIVE\","
-				+ "\"code\": \"GMS00000045\","
-				+ "\"name\": \"캐주얼&광고사업본부\","
-				+ "\"parent_code\": \"GMS00000159\","
-				+ " \"is_private\": false,"
-				+ " \"order\": 3"
-				+ " }"
-				+ "]"
-				+ "}";
-	}
-	
-	/*
 	@GetMapping("/orgunit/v0/getValidOrgunits")
-    public ValidunitVo getValidOrgunits(@RequestBody ValidunitIo Io, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getValidOrgunits(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
-		
+		String jsonString =null;
 		ValidunitVo va = new ValidunitVo();
 		List<VaContent> co = new ArrayList();
 		
@@ -407,9 +376,20 @@ public class apiController {
         	va = new ValidunitVo(200, "ok", 12, 5555, 500, 2, 500, false, false, co);
         }    	
     	
-        return va;
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+        
+		try {
+            // 객체를 JSON 문자열로 변환
+            jsonString  = objectMapper.writeValueAsString(va);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
+		
     }
-	*/
+	
 	@GetMapping("/orgunit/v0/getResponsibilities")
 	public String getResponsibilities() {
 		

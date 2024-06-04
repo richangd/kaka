@@ -56,10 +56,24 @@ public class Content {
 		this.photo_url = st12;
 	}
 
-	public Content(String string, String[] li, String string2, String string3, String string4, String string5,
-			String string6, String string7, String string8, com.example.demo.domain.more_telephones ph, String string9,
-			String string10, boolean b, String string11) {
-		// TODO Auto-generated constructor stub
+	public Content(String st, String[] li, String st2, String st3, String st4, String st5,
+			String st6, String st7, String st8, more_telephones ph, String st9,
+			String st10, boolean b, String st11) {
+		
+		this.status = st;
+		this.identifiers = li;
+		this.name = st2;
+		this.nickname = st3;
+		this.email = st4;
+		this.email_verification = st5;
+		this.telephone_international = st6;
+		this.telephone_for_display = st7;
+		this.telephone_verification = st8;
+		this.more_telephones = ph;
+		this.birthday = st9;
+		this.gender = st10;
+		this.is_lunar = b;
+		this.photo_url = st11;
 	}
 
 	public String getStatus() {
