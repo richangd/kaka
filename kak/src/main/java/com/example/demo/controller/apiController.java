@@ -78,7 +78,7 @@ public class apiController {
     		String g3 = "login";
     		String g4 = "orgunit";
     		
-        	ag = new agentVo(200, "ok", new String[]{g4});
+        	ag = new agentVo(200, "ok", new String[]{g3, g4});
         }
         return ag;
     }    
@@ -253,7 +253,7 @@ public class apiController {
 		ValidunitVo va = new ValidunitVo();
 		List<VaContent> co = new ArrayList();
 		
-		co.add(new VaContent("ACTIVE", "21", "카카오게임즈", "#", false, 0));
+		co.add(new VaContent("ACTIVE", "21", "캐논코리아", "#", false, 0));
 		co.add(new VaContent("ACTIVE", "22", "캐주얼&광고사업본부", "21", false, 0));
 		
 		
