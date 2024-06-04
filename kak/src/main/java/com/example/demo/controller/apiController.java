@@ -12,6 +12,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
+import ch.qos.logback.classic.Logger;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,18 +61,27 @@ import com.example.demo.orgunits.domain.ValidunitVo;
 @CrossOrigin("*")
 public class apiController {
    
-   
-   @PostMapping("/login/v0/identifyUser")
-   public idreturn post(@RequestBody Param param) {
-	   idreturn idreturn = new idreturn("Success", "AUTH_SUCCESS", 200, "OK");   
+   private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
-       return idreturn;
+   @PostMapping("/login/v0/identifyUser")
+   public idreturn post(@RequestBody Param param, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	   
+	   idreturn id = new idreturn();
+	   
+	   if (OrgLoginType == null) {
+           throw new MissingRequiredHeaderException("The required header is missing.");
+       }else {
+    	   idreturn idreturn = new idreturn("Success", "AUTH_SUCCESS", 200, "OK");
+       }
+	   
+	   
+       return id;
    }
 
     @GetMapping("/agent/v0/getAgentCapabilities")
     public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
     	agentVo ag = new agentVo();
-    	
+    	logger.trace("getAgentCapabilities 테스트");
     	if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {

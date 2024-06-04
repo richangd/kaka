@@ -15,6 +15,10 @@ public class idreturn {
 		this._message = _message;
 	}
 
+	public idreturn() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getResult() {
 		return this.result = "SUCCESS";
 	}
