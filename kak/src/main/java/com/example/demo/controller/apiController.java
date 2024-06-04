@@ -93,7 +93,7 @@ public class apiController {
     		String g3 = "login";
     		String g4 = "orgunit";
     		
-        	ag = new agentVo(200, "ok", new String[]{g3, g4});
+        	ag = new agentVo(200, "ok", new String[]{g2, g3, g4});
         }
         return ag;
     }    
