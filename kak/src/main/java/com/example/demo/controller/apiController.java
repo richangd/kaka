@@ -117,76 +117,6 @@ public class apiController {
     	    	
         return re;
     }    
-    
-	@GetMapping("/user/v0/getValidUsers1")
-	public String getValidUsers() {			
-    	
-        return "{"
-				+ "  \"_code\": 200,"
-				+ "\"_message\": \"ok\","
-				+ "  \"total_pages\": 12,"
-				+ "  \"total_elements\": 5555,"
-				+ "  \"size\": 500,"
-				+ "  \"number\": 1,"
-				+ "  \"number_of_elements\": 500,"
-				+ "  \"is_last\": false,"
-				+ "  \"is_first\": true,"
-				+ "  \"contents\": ["
-				+ "    {"
-				+ " \"status\": \"ACTIVE\","
-				+ "      \"identifiers\": [\"test.kim\", \"10405312\", \"Kim.Changbeom@kr.canon\"],"
-				+ "      \"name\": \"테스트\","
-				+ "      \"nickname\": \"테스트\","
-				+ "      \"email\": \"Kim.Changbeom@kr.canon\","
-				+ "      \"email_verification\": \"TO_VERIFY\","
-				+ "      \"telephone_international\": \"+82 10-1234-5678\","
-				+ "      \"telephone_for_display\": \"010-1234-5678 내선 5\","
-				+ "      \"telephone_verification\": \"TO_VERIFY\","
-				+ "      \"more_telephones\": ["
-				+ "        {"
-				+ "          \"type\": \"MOBILE\","
-				+ "          \"international\": \"+82 10-1111-2222\","
-				+ "          \"display\": \"010-1111-2222\","
-				+ "          \"verification\": \"TOVERIFY\""
-				+ "        }"
-				+ "      ],"
-				+ "      \"birthday\": \"01-01\","
-				+ "      \"gender\": \"MALE\","
-				+ "      \"is_lunar\": false,"
-				+ "      \"photo_url\": \"\""
-				+ "          },"
-				+ "    {"
-				+ "      \"status\": \"ACTIVE\","
-				+ "      \"identifiers\": [\"관리자\", \"10377788\", \"sdmail@kr.canon\"],"
-				+ "      \"name\": \"관리자\","
-				+ "      \"nickname\": \"admin_canon\","
-				+ "      \"email\": \"sdmail@kr.canon\","
-				+ "      \"email_verification\": \"TO_VERIFY\","
-				+ "      \"telephone_international\": \"+82 10-8765-4321\","
-				+ "      \"telephone_for_display\": \"010-8765-4321 휴대용\","
-				+ "      \"telephone_verification\": \"TO_VERIFY\","
-				+ "      \"more_telephones\": ["
-				+ "        {"
-				+ "          \"type\": \"FIXED_LINE\","
-				+ "          \"international\": \"+82 31-2222-5555\","
-				+ "          \"display\": \"031-2222-5555\","
-				+ "          \"verification\": \"TOVERIFY\""
-				+ "        },"
-				+ "        {"
-				+ "          \"type\": \"IPT\","
-				+ "          \"display\": \"개발 2팀\","
-				+ "          \"number\": \"987654321\""
-				+ "        }"
-				+ "      ],"
-				+ "      \"birthday\": \"01-01\","
-				+ "      \"gender\": \"FEMALE\","
-				+ "      \"is_lunar\": false,"
-				+ "      \"photo_url\": \"\""
-				+ "    }"
-				+ "  ]"
-				+ "}"
-				+ "";
-	}
 		
 	 @GetMapping("/user/v0/getValidUsers")
 	 public String getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
@@ -330,35 +260,10 @@ public class apiController {
         
         return jsonString;
 		
-    }
+    }	
 	
 	@GetMapping("/orgunit/v0/getResponsibilities")
-	public String getResponsibilities() {
-		
-		return "{"
-				+ "\"_code\": 200,"
-				+ " \"_message\": \"ok\","
-				+ "\"total_pages\": 12,"
-				+ "\"total_elements\": 5555,"
-				+ "\"size\": 500,"
-				+ "\"number\": 2,"
-				+ "\"number_of_elements\": 500,"
-				+ "\"is_last\": false,"
-				+ "\"is_first\": false,"
-				+ "\"contents\": ["
-				+ "  {"
-				+ "  \"code\": \"1\","
-				+ "\"level\": 1,"
-				+ "\"name\": \"대표이사\""
-				+ "}"
-				+ "   ]"
-				+ "}";
-	}
-	
-	
-	
-	@GetMapping("/orgunit/v0/getResponsibilities1")
-    public ResponsibilVo getResponsibilities(@RequestBody ResponsibilIo Re, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getResponsibilities(@RequestBody ResponsibilIo Re, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
 		ResponsibilVo Rev = new ResponsibilVo();
@@ -374,7 +279,20 @@ public class apiController {
         	Rev = new ResponsibilVo(200, "ok", 12, 5555, 500, 2, 500, false, false, rco);
         }    	
     	
-        return Rev;
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+        
+		String jsonString = null;
+		
+		try {
+            // 객체를 JSON 문자열로 변환
+            jsonString  = objectMapper.writeValueAsString(Rev);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
     }
 	
 	@GetMapping("/orgunit/v0/getPositions")
