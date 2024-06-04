@@ -76,7 +76,7 @@ public class apiController {
     		String g3 = "login";
     		String g4 = "orgunit";
     		
-        	ag = new agentVo(200, "ok", new String[]{g4});
+        	ag = new agentVo(200, "ok", new String[]{g4, g2});
         }
         return ag;
     }    
