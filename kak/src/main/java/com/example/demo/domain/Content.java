@@ -2,10 +2,17 @@ package com.example.demo.domain;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class Content {
 	
 	private String status;
@@ -47,6 +54,12 @@ public class Content {
 		this.gender = st10;
 		this.is_lunar = st11;
 		this.photo_url = st12;
+	}
+
+	public Content(String string, String[] li, String string2, String string3, String string4, String string5,
+			String string6, String string7, String string8, com.example.demo.domain.more_telephones ph, String string9,
+			String string10, boolean b, String string11) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getStatus() {
