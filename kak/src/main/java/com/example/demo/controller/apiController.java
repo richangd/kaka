@@ -291,7 +291,7 @@ public class apiController {
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	Rev = new ResponsibilVo(200, "ok", 12, 5555, 500, 2, 500, false, false, rco);
+        	Rev = new ResponsibilVo(200, "ok", 1, 2, 10, 1, 10, true, true, rco);
         }    	
     	
 		
