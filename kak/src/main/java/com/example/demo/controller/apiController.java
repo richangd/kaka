@@ -222,8 +222,8 @@ public class apiController {
 		ChangeOrgVo chorg = new ChangeOrgVo();
 		List<ChangeOrgContent> chorgco = new ArrayList();
 		
-		chorgco.add(new ChangeOrgContent("REGISTERED", "sol", "솔루션개발담당", "S개발팀", false, 0));
-		chorgco.add(new ChangeOrgContent("UPDATED", "MTSM", "MTS마케팅", "MTS", false, 0));
+		chorgco.add(new ChangeOrgContent("REGISTERED", "21", "카카오게임즈", "#", false, 0));
+		chorgco.add(new ChangeOrgContent("UPDATED", "MTSM", "MTS마케팅", "21", false, 0));
 		
 		
 		if (OrgLoginType == null) {
@@ -254,7 +254,7 @@ public class apiController {
 		List<VaContent> co = new ArrayList();
 		
 		co.add(new VaContent("ACTIVE", "21", "카카오게임즈", "#", false, 0));
-		co.add(new VaContent("ACTIVE", "GMS00000045", "카카오게임즈", "#", false, 0));
+		co.add(new VaContent("ACTIVE", "22", "캐주얼&광고사업본부", "21", false, 0));
 		
 		
 		if (OrgLoginType == null) {
