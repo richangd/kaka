@@ -153,7 +153,7 @@ public class apiController {
 			
 			ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 			
-			ct.add(new Content1("ACTIVE", li ,"김창범"));
+			ct.add(new Content1("ACTIVE", li ,"김창범", "Kim.Changbeom@kr.canon", "VERIFIED"));
 			
 			g1 = "관리자";
 			g2 = "10377788";
@@ -164,21 +164,21 @@ public class apiController {
 			mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
 			mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
 			
-			ct.add(new Content1("ACTIVE", li ,"관리자"));
+			ct.add(new Content1("ACTIVE", li ,"관리자", "sdmail@kr.canon", "VERIFIED"));
 			
 			g1 = "김대진";
 			g2 = "10405313";
 			g3 = "Kim.DaeJin@kr.canon";
 			
 			li = new String[]{g1, g2, g3};
-			ct.add(new Content1("ACTIVE", li ,"김대진"));
+			ct.add(new Content1("ACTIVE", li ,"김대진", "Kim.DaeJin@kr.canon", "VERIFIED"));
 			
 			g1 = "박응수";
 			g2 = "10414705";
 			g3 = "espark@kr.canon";
 			
 			li = new String[]{g1, g2, g3};
-			ct.add(new Content1("ACTIVE", li ,"박응수"));
+			ct.add(new Content1("ACTIVE", li ,"박응수", "espark@kr.canon", "VERIFIED"));
 	    	
 			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
