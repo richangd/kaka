@@ -15,7 +15,7 @@ public class Content1 {
 	private String[] identifiers;	
 	private String name;
 	public Content1(String st, String[] li, String st1) {
-		this.status = status;
+		this.status = st;
 		this.identifiers = li;
 		this.name = st1;
 	}
