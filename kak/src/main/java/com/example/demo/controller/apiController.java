@@ -49,6 +49,8 @@ import com.example.demo.domain.telephones;
 import com.example.demo.exeption.MissingRequiredHeaderException;
 import com.example.demo.orgunits.domain.ChangeOrgContent;
 import com.example.demo.orgunits.domain.ChangeOrgVo;
+import com.example.demo.orgunits.domain.PosiContent;
+import com.example.demo.orgunits.domain.PositionVo;
 import com.example.demo.orgunits.domain.ResponsContent;
 import com.example.demo.orgunits.domain.ResponsibilIo;
 import com.example.demo.orgunits.domain.ResponsibilVo;
@@ -222,7 +224,7 @@ public class apiController {
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok", 1, 4, 10, 1, 10, true, false ,ct);
+        	va = new ValidVo(200, "ok", 1, 4, 10, 1, 10, true, true ,ct);
         }    	
 		
 		
@@ -258,7 +260,7 @@ public class apiController {
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	chorg = new ChangeOrgVo(200, "ok", 12, 5555, 500, 2, 500, false, false, chorgco);
+        	chorg = new ChangeOrgVo(200, "ok", 1, 10, 500, 1, 500, true, true, chorgco);
         }    	
     	
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -288,7 +290,7 @@ public class apiController {
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidunitVo(200, "ok", 12, 5555, 500, 2, 500, false, false, co);
+        	va = new ValidunitVo(200, "ok", 12, 5555, 500, 2, 500, true, true, co);
         }    	
     	
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -339,20 +341,31 @@ public class apiController {
     }
 	
 	@GetMapping("/orgunit/v0/getPositions")
-    public ValidVo getPositions(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    public String getPositions(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+		String jsonString = null;		
+		ObjectMapper objectMapper = new ObjectMapper();
+		PositionVo Po = new PositionVo();
+		List<PosiContent> Poc = new ArrayList();		
 		
-		ValidVo va = new ValidVo();
-		
+		Poc.add(new PosiContent("1", 1, "사장"));
+		Poc.add(new PosiContent("2", 2, "부장"));
 		
 		
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	
-        }    	
+        	Po = new PositionVo(200, "ok", 1, 2, 10, 1, 10, true, true, Poc);
+        }
+		
+		try {
+            // 객체를 JSON 문자열로 변환
+            jsonString  = objectMapper.writeValueAsString(Po);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     	
-        return va;
+        return jsonString;
     }
 }
 
