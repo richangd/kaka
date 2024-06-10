@@ -203,32 +203,55 @@ public class apiController {
     public String getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
 		
-		ValidVo va = new ValidVo();
 		String jsonString = null;
-		
+    	ValidVo va = new ValidVo();
 		
 		String g1 = "김창범";
 		String g2 = "10405312";
 		String g3 = "Kim.Changbeom@kr.canon";
 		
-		String[] li = new String[]{g1, g2, g3};		
+		String[] li = new String[]{g1, g2, g3};
+		List<Content1> ct = new ArrayList();
+		List mo = new ArrayList();
 		
-		List<Content> ct = new ArrayList();
 		List<more_telephones> ph = new ArrayList();
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
+		ct.add(new Content1("REGISTERED", li ,"김창범", "Kim.Changbeom@kr.canon", "VERIFIED"));
 		
-		ct.add(new Content("UPDATED", li ,"테스트", "테스트", "Kim.Changbeom@kr.canon", "TO_VERIFY", "+82 10-1234-5678", "010-1234-5678 내선 5", "TO_VERIFY", ph, "01-01", "male", false, ""));    	
+		g1 = "관리자";
+		g2 = "10377788";
+		g3 = "sdmail@kr.canon";
 		
+		li = new String[]{g1, g2, g3};
+		
+		mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
+		mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
+		
+		ct.add(new Content1("REGISTERED", li ,"관리자", "sdmail@kr.canon", "VERIFIED"));
+		
+		g1 = "김대진";
+		g2 = "10405313";
+		g3 = "Kim.DaeJin@kr.canon";
+		
+		li = new String[]{g1, g2, g3};
+		ct.add(new Content1("REGISTERED", li ,"김대진", "Kim.DaeJin@kr.canon", "VERIFIED"));
+		
+		g1 = "박응수";
+		g2 = "10414705";
+		g3 = "espark@kr.canon";
+		
+		li = new String[]{g1, g2, g3};
+		ct.add(new Content1("REGISTERED", li ,"박응수", "espark@kr.canon", "VERIFIED"));
+    	
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok", 1, 4, 10, 1, 10, true, true ,ct);
-        }    	
-		
-		
-		ObjectMapper objectMapper = new ObjectMapper();
+        	va = new ValidVo(200, "ok", 1, 4, 10, 1, 10, true, true, ct);
+        }
+    	
+    	ObjectMapper objectMapper = new ObjectMapper();
 		
         try {
             // 객체를 JSON 문자열로 변환
@@ -236,7 +259,6 @@ public class apiController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        
         return jsonString;
 		
 		
