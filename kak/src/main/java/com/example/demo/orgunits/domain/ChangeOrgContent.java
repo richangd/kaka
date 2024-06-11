@@ -14,12 +14,12 @@ public class ChangeOrgContent {
 	private Integer order;
 	
 	public ChangeOrgContent(String st, String st1, String st2, String st3, boolean b, int i) {
-		this.status = status;
-		this.code = code;
-		this.name = name;
-		this.parent_code = parent_code;
-		this.is_private = is_private;
-		this.order = order;
+		this.status = st;
+		this.code = st1;
+		this.name = st2;
+		this.parent_code = st3;
+		this.is_private = b;
+		this.order = i;
 	}
 	public String getStatus() {
 		return status;
