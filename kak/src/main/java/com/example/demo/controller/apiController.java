@@ -275,7 +275,8 @@ public class apiController {
 		ChangeOrgVo chorg = new ChangeOrgVo();
 		List<ChangeOrgContent> chorgco = new ArrayList();
 		
-		chorgco.add(new ChangeOrgContent("REGISTERED", "21", "카카오게임즈", "#", false, 0));
+		chorgco.add(new ChangeOrgContent("REGISTERED", "21", "캐논코리아", "#", false, 0));
+		chorgco.add(new ChangeOrgContent("REGISTERED", "22", "카카오게임즈", "21", false, 0));
 		chorgco.add(new ChangeOrgContent("REGISTERED", "MTSM", "MTS마케팅", "21", false, 0));
 		
 		
