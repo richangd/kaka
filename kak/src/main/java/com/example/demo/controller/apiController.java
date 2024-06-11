@@ -247,10 +247,9 @@ public class apiController {
 		
 		
 		g1 = "테스트";
-		g2 = "087217";
 		g3 = "kimncbv@naver.com";
 		
-		li = new String[]{g1, g2, g3};
+		li = new String[]{g1, g3};
 		
 		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@naver.com", "VERIFY"));
 		
