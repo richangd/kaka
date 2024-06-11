@@ -373,10 +373,37 @@ public class apiController {
 		PositionVo Po = new PositionVo();
 		List<PosiContent> Poc = new ArrayList();		
 		
-		Poc.add(new PosiContent("1", 1, "사장"));
-		Poc.add(new PosiContent("2", 2, "부장"));
-		Poc.add(new PosiContent("3", 3, "차장"));
-		Poc.add(new PosiContent("4", 4, "과장"));
+		Poc.add(new PosiContent("1", 1, "과장"));
+		Poc.add(new PosiContent("2", 2, "기획조정실장"));
+		Poc.add(new PosiContent("3", 3, "병원장"));
+		Poc.add(new PosiContent("4", 4, "부원장"));
+		Poc.add(new PosiContent("5", 5, "부장"));
+		Poc.add(new PosiContent("6", 6, "사원"));
+		Poc.add(new PosiContent("7", 7, "센터장"));
+		Poc.add(new PosiContent("8", 8, "소장"));
+		Poc.add(new PosiContent("9", 9, "수간호사"));
+		Poc.add(new PosiContent("10", 10, "수술부장"));
+		Poc.add(new PosiContent("11", 11, "실장"));
+		Poc.add(new PosiContent("12", 12, "약사"));
+		Poc.add(new PosiContent("13", 13, "이사"));
+		Poc.add(new PosiContent("14", 14, "이사장"));
+		Poc.add(new PosiContent("15", 15, "주임"));
+		Poc.add(new PosiContent("16", 16, "주임조무사"));
+		Poc.add(new PosiContent("17", 17, "진료과장"));
+		Poc.add(new PosiContent("18", 18, "진료부장"));
+		Poc.add(new PosiContent("19", 19, "책임간호사1"));
+		Poc.add(new PosiContent("20", 20, "직위"));
+		Poc.add(new PosiContent("21", 21, "책임"));
+		Poc.add(new PosiContent("22", 22, "팀장"));
+		Poc.add(new PosiContent("23", 23, "차장"));
+		Poc.add(new PosiContent("24", 24, "수간호사"));
+		Poc.add(new PosiContent("25", 25, "파트장"));
+		Poc.add(new PosiContent("26", 26, "본부장"));
+		Poc.add(new PosiContent("27", 27, "원장"));
+		Poc.add(new PosiContent("28", 28, "상무이사"));
+		Poc.add(new PosiContent("29", 29, "국장"));
+		Poc.add(new PosiContent("30", 30, "2본부장"));
+		
 		
 		
 		if (OrgLoginType == null) {
