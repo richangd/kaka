@@ -218,7 +218,7 @@ public class apiController {
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
-		ct.add(new Content1("REGISTERED", li ,"김창범", "Kim.Changbeom@kr.canon", "VERIFIED"));
+		ct.add(new Content1("HARD_DELETE", li ,"김창범", "Kim.Changbeom@kr.canon", "VERIFIED"));
 		
 		g1 = "관리자";
 		g2 = "10377788";
@@ -244,6 +244,15 @@ public class apiController {
 		
 		li = new String[]{g1, g2, g3};
 		ct.add(new Content1("REGISTERED", li ,"박응수", "espark@kr.canon", "VERIFIED"));
+		
+		
+		g1 = "김창범";
+		g3 = "kimncbv@naver.com";
+		
+		li = new String[]{g1, g3};
+		
+		ct.add(new Content1("REGISTERED", li ,"김창범", "kimncbv@naver.com", "TO_VERIFY"));
+		
     	
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
