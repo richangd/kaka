@@ -251,7 +251,15 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY"));
+		ct.add(new Content1("DELETED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY"));
+		
+		g1 = "테스트";
+		g3 = "kimncbv@gmail.com";
+		
+		li = new String[]{g1, g3};
+		
+		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@gmail.com", "TO_VERIFY"));
+		
 		
     	
 		if (OrgLoginType == null) {
