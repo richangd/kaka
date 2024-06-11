@@ -337,10 +337,25 @@ public class apiController {
 		ResponsibilVo Rev = new ResponsibilVo();
 		List<ResponsContent> rco = new ArrayList();
 		
-		rco.add(new ResponsContent("1", 1, "대표이사"));
-		rco.add(new ResponsContent("2", 2, "실장"));
-		rco.add(new ResponsContent("3", 3, "팀장"));
-		rco.add(new ResponsContent("4", 4, "매니저"));
+		rco.add(new ResponsContent("1", 1, "이사장"));
+		rco.add(new ResponsContent("2", 2, "병원장"));
+		rco.add(new ResponsContent("3", 3, "부원장"));
+		rco.add(new ResponsContent("4", 4, "관리부장"));
+		rco.add(new ResponsContent("5", 5, "간호부장"));
+		rco.add(new ResponsContent("6", 6, "진료부장"));
+		rco.add(new ResponsContent("7", 7, "내과과장"));
+		rco.add(new ResponsContent("8", 8, "정형외과과장"));
+		rco.add(new ResponsContent("9", 9, "신경외과과장"));
+		rco.add(new ResponsContent("10", 10, "성형외과과장"));
+		rco.add(new ResponsContent("11", 11, "산부인과과장"));
+		rco.add(new ResponsContent("12", 12, "소아과과장"));
+		rco.add(new ResponsContent("13", 13, "안과과장"));
+		rco.add(new ResponsContent("14", 14, "내시경과장"));
+		rco.add(new ResponsContent("15", 15, "응급의학과과장"));
+		rco.add(new ResponsContent("16", 16, "마취통증의학과과장"));
+		rco.add(new ResponsContent("17", 17, "진단방사선과과장"));
+		rco.add(new ResponsContent("18", 18, "진단검사의학과과장"));
+		rco.add(new ResponsContent("19", 19, "외과과장"));
 		
 		
 		if (OrgLoginType == null) {
