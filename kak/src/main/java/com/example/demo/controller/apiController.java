@@ -339,6 +339,8 @@ public class apiController {
 		
 		rco.add(new ResponsContent("1", 1, "대표이사"));
 		rco.add(new ResponsContent("2", 2, "실장"));
+		rco.add(new ResponsContent("3", 3, "팀장"));
+		rco.add(new ResponsContent("4", 4, "매니저"));
 		
 		
 		if (OrgLoginType == null) {
@@ -373,6 +375,8 @@ public class apiController {
 		
 		Poc.add(new PosiContent("1", 1, "사장"));
 		Poc.add(new PosiContent("2", 2, "부장"));
+		Poc.add(new PosiContent("2", 2, "차장"));
+		Poc.add(new PosiContent("2", 2, "과장"));
 		
 		
 		if (OrgLoginType == null) {
