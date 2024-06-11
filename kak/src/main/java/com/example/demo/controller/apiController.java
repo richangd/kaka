@@ -185,7 +185,7 @@ public class apiController {
 			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
 	        }else {
-	        	va = new ValidVo(200, "ok", 1, 5, 10, 1, 10, true, true, ct);
+	        	va = new ValidVo(200, "ok", 1, 6, 10, 1, 10, true, true, ct);
 	        }
 	    	
 	    	ObjectMapper objectMapper = new ObjectMapper();
@@ -265,7 +265,7 @@ public class apiController {
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok", 1, 5, 10, 1, 10, true, true, ct);
+        	va = new ValidVo(200, "ok", 1, 6, 10, 1, 10, true, true, ct);
         }
     	
     	ObjectMapper objectMapper = new ObjectMapper();
