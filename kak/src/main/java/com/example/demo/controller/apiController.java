@@ -375,8 +375,8 @@ public class apiController {
 		
 		Poc.add(new PosiContent("1", 1, "사장"));
 		Poc.add(new PosiContent("2", 2, "부장"));
-		Poc.add(new PosiContent("2", 2, "차장"));
-		Poc.add(new PosiContent("2", 2, "과장"));
+		Poc.add(new PosiContent("3", 3, "차장"));
+		Poc.add(new PosiContent("4", 4, "과장"));
 		
 		
 		if (OrgLoginType == null) {
