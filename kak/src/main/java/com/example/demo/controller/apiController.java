@@ -213,7 +213,7 @@ public class apiController {
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
-		ct.add(new Content1("UPDATED", li ,"김창범", "Kim.Changbeom@naver.com", "TO_VERIFY"));
+		ct.add(new Content1("REGISTERED", li ,"김창범", "Kim.Changbeom@kr.canon", "TO_VERIFY"));
 		
 		g1 = "관리자";
 		g3 = "sdmail@kr.canon";
