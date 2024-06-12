@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import ch.qos.logback.classic.Logger;
 
+import org.apache.commons.logging.Log;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,15 +60,23 @@ import com.example.demo.orgunits.domain.ValidunitIo;
 import com.example.demo.orgunits.domain.ValidunitVo;
 
 
+
+
+
 @RestController
 @RequestMapping(value = "api")
 @CrossOrigin("*")
 public class apiController {
+      
+   private org.slf4j.Logger logger = LoggerFactory.getLogger("KAKAOWORK"); 
    
-   private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
-
+   
+   
    @PostMapping("/login/v0/identifyUser")
    public idreturn post(@RequestBody Param param, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+	   logger.info("api/login/v0/identifyUser");
+	   logger.info(param.getpassword());
+	   logger.info(OrgLoginType);
 	   
 	   idreturn id = new idreturn();
 	   
@@ -87,7 +96,6 @@ public class apiController {
     @GetMapping("/agent/v0/getAgentCapabilities")
     public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
     	agentVo ag = new agentVo();
-    	logger.trace("getAgentCapabilities 테스트");
     	if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
