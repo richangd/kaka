@@ -291,21 +291,21 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY"));
+		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY", or));
 		
 		g1 = "테스트2";
 		g3 = "kimncbv2@naver.com";
 		
 		li = new String[]{g1, g3};
 		
-		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY"));
+		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY",or));
 		
 		g1 = "테스트4";
 		g3 = "kimncbv4@gmail.com";
 		
 		li = new String[]{g1, g3};
 		
-		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv4@gmail.com", "TO_VERIFY"));
+		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv4@gmail.com", "TO_VERIFY", or));
 		
 		
 		g1 = "테스트5";
@@ -313,7 +313,7 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv5@gmail.com", "TO_VERIFY"));
+		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv5@gmail.com", "TO_VERIFY", or));
 		
 		
     	
