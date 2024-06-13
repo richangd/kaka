@@ -56,6 +56,12 @@ public class Content2 {
 	public void setEmail_verification(String email_verification) {
 		this.email_verification = email_verification;
 	}
+	public Object getExtra() {
+		return extra;
+	}
+	public void setExtra(Object extra) {
+		this.extra = extra;
+	}
 	
 	
 }
