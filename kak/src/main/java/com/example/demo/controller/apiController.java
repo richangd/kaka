@@ -95,6 +95,9 @@ public class apiController {
 
     @GetMapping("/agent/v0/getAgentCapabilities")
     public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    	
+    	logger.info("api/agent/v0/getAgentCapabilities");
+ 	   	
     	agentVo ag = new agentVo();
     	if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
@@ -104,7 +107,7 @@ public class apiController {
     		String g3 = "login";
     		String g4 = "orgunit";
     		
-        	ag = new agentVo(200, "ok", new String[]{g2, g3, g4});
+        	ag = new agentVo(200, "ok", new String[]{g2, g4});
         }
         return ag;
     }    
@@ -112,6 +115,8 @@ public class apiController {
     @GetMapping("/user/v0/getUserMetadata")
     public MetadataVo getUserMetadata(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+    	logger.info("api/user/v0/getUserMetadata");
+    	
     	MetadataVo ag = new MetadataVo();
     	telephones te = new telephones();
     	List<synchronize_options> sy= new ArrayList<>();
@@ -127,12 +132,15 @@ public class apiController {
         }else {
         	ag = new MetadataVo(pr, sy);
         }
-    	
         return ag;
     }
     
     @PostMapping("/agent/v0/reportError")
     public ReportVo post(@RequestBody Report report, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
+    	logger.info("api/agent/v0/reportError");
+ 	   	logger.info(report.getCapability());
+ 	   	logger.info(report.getMessage());
+    	
     	ReportVo re = new ReportVo();
     	String Capab = report.getCapability();
     	Integer Co = report.getCode();
@@ -148,7 +156,9 @@ public class apiController {
 		
 	 @GetMapping("/user/v0/getValidUsers")
 	 public String getAgentCapabilit(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
-	    	String jsonString = null;
+		 	logger.info("api/user/v0/getValidUsers");
+		 
+		 	String jsonString = null;
 	    	ValidVo va = new ValidVo();
 			
 			String g1 = "김창범";
@@ -200,12 +210,14 @@ public class apiController {
 	        } catch (JsonProcessingException e) {
 	            e.printStackTrace();
 	        }
+	        
+	        logger.info(jsonString);
 	        return jsonString;
 	    }	
 	
 	@GetMapping("/user/v0/getChangedUsers")
     public String getgetChangedUsers(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
-        
+		logger.info("api/user/v0/getChangedUsers");
 		
 		String jsonString = null;
     	ValidVo va = new ValidVo();
@@ -276,9 +288,10 @@ public class apiController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return jsonString;
-		
-		
+        
+        logger.info(jsonString);
+        
+        return jsonString;		
     }
 
 	/* 조직도 관련 API
@@ -287,7 +300,9 @@ public class apiController {
 	
 	@GetMapping("/orgunit/v0/getChangedOrgunits")
     public String getChangedOrgunits(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
-        
+		
+		logger.info("api/orgunit/v0/getChangedOrgunits");
+		
 		String jsonString =null;
 		ChangeOrgVo chorg = new ChangeOrgVo();
 		List<ChangeOrgContent> chorgco = new ArrayList();
@@ -312,7 +327,9 @@ public class apiController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-    	
+		
+		logger.info(jsonString);
+		
         return jsonString;
     }
 	
@@ -320,6 +337,8 @@ public class apiController {
 	@GetMapping("/orgunit/v0/getValidOrgunits")
     public String getValidOrgunits(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+		logger.info("api/orgunit/v0/getValidOrgunits");
+		
 		String jsonString =null;
 		ValidunitVo va = new ValidunitVo();
 		List<VaContent> co = new ArrayList();
@@ -342,7 +361,9 @@ public class apiController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        
+		
+		logger.info(jsonString);
+		
         return jsonString;
 		
     }	
@@ -350,6 +371,7 @@ public class apiController {
 	@GetMapping("/orgunit/v0/getResponsibilities")
     public String getResponsibilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+		logger.info("api/orgunit/v0/getResponsibilities");
 		
 		ResponsibilVo Rev = new ResponsibilVo();
 		List<ResponsContent> rco = new ArrayList();
@@ -393,13 +415,17 @@ public class apiController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        
+		
+		logger.info(jsonString);
+		
         return jsonString;
     }
 	
 	@GetMapping("/orgunit/v0/getPositions")
     public String getPositions(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
         
+		logger.info("api/orgunit/v0/getPositions");
+		
 		String jsonString = null;		
 		ObjectMapper objectMapper = new ObjectMapper();
 		PositionVo Po = new PositionVo();
@@ -450,7 +476,9 @@ public class apiController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-    	
+		
+		logger.info(jsonString);
+		
         return jsonString;
     }
 }
