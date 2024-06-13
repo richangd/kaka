@@ -175,8 +175,8 @@ public class apiController {
 			List<more_telephones> ph = new ArrayList();
 			
 			
-			departments dp = new departments("#", true, true, "1");
-			orgunit o = new orgunit(dp, "1");
+			departments dp = new departments("21", true, true, "1");
+			orgunit o = new orgunit(dp, "2");
 			UserExtra or = new UserExtra(o);
 			
 			
@@ -244,8 +244,8 @@ public class apiController {
 		
 		List<more_telephones> ph = new ArrayList();
 		
-		departments dp = new departments("#", true, true, "1");
-		orgunit o = new orgunit(dp, "1");
+		departments dp = new departments("21", true, true, "1");
+		orgunit o = new orgunit(dp, "2");
 		UserExtra or = new UserExtra(o);
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
