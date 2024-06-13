@@ -266,7 +266,7 @@ public class apiController {
 		
 		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY"));
 		
-		g1 = "테스트";
+		g1 = "테스트3";
 		g3 = "kimncbv3@gmail.com";
 		
 		li = new String[]{g1, g3};
