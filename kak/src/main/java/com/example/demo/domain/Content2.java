@@ -18,7 +18,7 @@ public class Content2 {
 	private String email_verification;
 	private Object extra;
 	
-	public Content2(String st, String[] li, String st1, String st2, String st3, orgunit or) {
+	public Content2(String st, String[] li, String st1, String st2, String st3, UserExtra or) {
 		this.status = st;
 		this.identifiers = li;
 		this.name = st1;

@@ -38,6 +38,7 @@ import com.example.demo.domain.Param;
 import com.example.demo.domain.Profile;
 import com.example.demo.domain.Report;
 import com.example.demo.domain.ReportVo;
+import com.example.demo.domain.UserExtra;
 import com.example.demo.domain.ValidUser;
 import com.example.demo.domain.ValidVo;
 import com.example.demo.domain.Valid;
@@ -175,7 +176,8 @@ public class apiController {
 			
 			
 			departments dp = new departments("#", true, true, "1");
-			orgunit or = new orgunit(dp, "1");
+			orgunit o = new orgunit(dp, "1");
+			UserExtra or = new UserExtra(o);
 			
 			
 			ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
@@ -243,7 +245,8 @@ public class apiController {
 		List<more_telephones> ph = new ArrayList();
 		
 		departments dp = new departments("#", true, true, "1");
-		orgunit or = new orgunit(dp, "1");
+		orgunit o = new orgunit(dp, "1");
+		UserExtra or = new UserExtra(o);
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
