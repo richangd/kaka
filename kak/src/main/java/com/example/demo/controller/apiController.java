@@ -199,7 +199,7 @@ public class apiController {
 			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
 	        }else {
-	        	va = new ValidVo(200, "ok", 1, 6, 10, 1, 10, true, true, ct);
+	        	va = new ValidVo(200, "ok", 1, 8, 10, 1, 10, true, true, ct);
 	        }
 	    	
 	    	ObjectMapper objectMapper = new ObjectMapper();
@@ -212,6 +212,7 @@ public class apiController {
 	        }
 	        
 	        logger.info(jsonString);
+	        
 	        return jsonString;
 	    }	
 	
@@ -263,21 +264,34 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("DELETED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY"));
+		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY"));
 		
 		g1 = "테스트";
 		g3 = "kimncbv@gmail.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("DELETED", li ,"테스트", "kimncbv@gmail.com", "TO_VERIFY"));
+		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@gmail.com", "TO_VERIFY"));
 		
+		g1 = "테스트1";
+		g3 = "kimncbv1@naver.com";
+		
+		li = new String[]{g1, g3};
+		
+		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY"));
+		
+		g1 = "테스트2";
+		g3 = "kimncbv2@naver.com";
+		
+		li = new String[]{g1, g3};
+		
+		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY"));
 		
     	
 		if (OrgLoginType == null) {
             throw new MissingRequiredHeaderException("The required header is missing.");
         }else {
-        	va = new ValidVo(200, "ok", 1, 6, 10, 1, 10, true, true, ct);
+        	va = new ValidVo(200, "ok", 1, 8, 10, 1, 10, true, true, ct);
         }
     	
     	ObjectMapper objectMapper = new ObjectMapper();
