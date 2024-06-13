@@ -31,6 +31,7 @@ import com.example.demo.domain.Agent;
 import com.example.demo.domain.ChangedUser;
 import com.example.demo.domain.Content;
 import com.example.demo.domain.Content1;
+import com.example.demo.domain.Content2;
 import com.example.demo.domain.Hello;
 import com.example.demo.domain.MetadataVo;
 import com.example.demo.domain.Param;
@@ -41,10 +42,12 @@ import com.example.demo.domain.ValidUser;
 import com.example.demo.domain.ValidVo;
 import com.example.demo.domain.Valid;
 import com.example.demo.domain.agentVo;
+import com.example.demo.domain.departments;
 import com.example.demo.domain.editability;
 import com.example.demo.domain.idreturn;
 import com.example.demo.domain.more_telephones;
 import com.example.demo.domain.more_telephones1;
+import com.example.demo.domain.orgunit;
 import com.example.demo.domain.synchronize_options;
 import com.example.demo.domain.telephones;
 import com.example.demo.exeption.MissingRequiredHeaderException;
@@ -165,14 +168,19 @@ public class apiController {
 			String g3 = "Kim.Changbeom@kr.canon";
 			
 			String[] li = new String[]{g1, g3};
-			List<Content1> ct = new ArrayList();
+			List<Content2> ct = new ArrayList();
 			List mo = new ArrayList();
 			
 			List<more_telephones> ph = new ArrayList();
 			
+			
+			departments dp = new departments("#", true, true, "1");
+			orgunit or = new orgunit(dp, "1");
+			
+			
 			ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 			
-			ct.add(new Content1("ACTIVE", li ,"김창범", "Kim.Changbeom@kr.canon", "VERIFIED"));
+			ct.add(new Content2("ACTIVE", li ,"김창범", "Kim.Changbeom@kr.canon", "VERIFIED", or));
 			
 			g1 = "관리자";
 			g3 = "sdmail@kr.canon";
@@ -182,19 +190,21 @@ public class apiController {
 			mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
 			mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
 			
-			ct.add(new Content1("ACTIVE", li ,"관리자", "sdmail@kr.canon", "VERIFIED"));
+			
+			
+			ct.add(new Content2("ACTIVE", li ,"관리자", "sdmail@kr.canon", "VERIFIED", or));
 			
 			g1 = "김대진";
 			g3 = "Kim.DaeJin@kr.canon";
 			
 			li = new String[]{g1, g3};
-			ct.add(new Content1("ACTIVE", li ,"김대진", "Kim.DaeJin@kr.canon", "VERIFIED"));
+			ct.add(new Content2("ACTIVE", li ,"김대진", "Kim.DaeJin@kr.canon", "VERIFIED", or));
 			
 			g1 = "박응수";
 			g3 = "espark@kr.canon";
 			
 			li = new String[]{g1, g3};
-			ct.add(new Content1("ACTIVE", li ,"박응수", "espark@kr.canon", "VERIFIED"));
+			ct.add(new Content2("ACTIVE", li ,"박응수", "espark@kr.canon", "VERIFIED", or));
 	    	
 			if (OrgLoginType == null) {
 	            throw new MissingRequiredHeaderException("The required header is missing.");
@@ -227,14 +237,17 @@ public class apiController {
 		String g3 = "Kim.Changbeom@kr.canon";
 		
 		String[] li = new String[]{g1, g3};
-		List<Content1> ct = new ArrayList();
+		List<Content2> ct = new ArrayList();
 		List mo = new ArrayList();
 		
 		List<more_telephones> ph = new ArrayList();
 		
+		departments dp = new departments("#", true, true, "1");
+		orgunit or = new orgunit(dp, "1");
+		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
-		ct.add(new Content1("DELETED", li ,"김창범", "Kim.Changbeom@kr.canon", "TO_VERIFY"));
+		ct.add(new Content2("DELETED", li ,"김창범", "Kim.Changbeom@kr.canon", "TO_VERIFY", or));
 		
 		g1 = "관리자";
 		g3 = "sdmail@kr.canon";
@@ -244,19 +257,19 @@ public class apiController {
 		mo.add(new more_telephones("FIXED_LINE", "+82 31-2222-5555", "031-2222-5555", "TOVERIFY"));
 		mo.add(new more_telephones1("IPT", "개발 2팀", "987654321"));
 		
-		ct.add(new Content1("REGISTERED", li ,"관리자", "sdmail@kr.canon", "VERIFIED"));
+		ct.add(new Content2("REGISTERED", li ,"관리자", "sdmail@kr.canon", "VERIFIED", or));
 		
 		g1 = "김대진";
 		g3 = "Kim.DaeJin@kr.canon";
 		
 		li = new String[]{g1, g3};
-		ct.add(new Content1("REGISTERED", li ,"김대진", "Kim.DaeJin@kr.canon", "VERIFIED"));
+		ct.add(new Content2("REGISTERED", li ,"김대진", "Kim.DaeJin@kr.canon", "VERIFIED", or));
 		
 		g1 = "박응수";
 		g3 = "espark@kr.canon";
 		
 		li = new String[]{g1, g3};
-		ct.add(new Content1("REGISTERED", li ,"박응수", "espark@kr.canon", "VERIFIED"));
+		ct.add(new Content2("REGISTERED", li ,"박응수", "espark@kr.canon", "VERIFIED", or));
 		
 		
 		g1 = "테스트";
@@ -264,35 +277,35 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY"));
+		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv@naver.com", "TO_VERIFY", or));
 		
 		g1 = "테스트3";
 		g3 = "kimncbv3@gmail.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv3@gmail.com", "TO_VERIFY"));
+		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv3@gmail.com", "TO_VERIFY", or));
 		
 		g1 = "테스트1";
 		g3 = "kimncbv1@naver.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY"));
+		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY"));
 		
 		g1 = "테스트2";
 		g3 = "kimncbv2@naver.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY"));
+		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY"));
 		
 		g1 = "테스트4";
 		g3 = "kimncbv4@gmail.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv4@gmail.com", "TO_VERIFY"));
+		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv4@gmail.com", "TO_VERIFY"));
 		
 		
 		g1 = "테스트5";
@@ -300,7 +313,7 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv5@gmail.com", "TO_VERIFY"));
+		//ct.add(new Content1("REGISTERED", li ,"테스트", "kimncbv5@gmail.com", "TO_VERIFY"));
 		
 		
     	
