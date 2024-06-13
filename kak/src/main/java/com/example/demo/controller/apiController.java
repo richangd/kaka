@@ -250,7 +250,7 @@ public class apiController {
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
 		
-		ct.add(new Content2("DELETED", li ,"김창범", "Kim.Changbeom@kr.canon", "TO_VERIFY", or));
+		ct.add(new Content2("REGISTERED", li ,"김창범", "Kim.Changbeom@kr.canon", "TO_VERIFY", or));
 		
 		g1 = "관리자";
 		g3 = "sdmail@kr.canon";
@@ -287,28 +287,28 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv3@gmail.com", "TO_VERIFY", or));
+		ct.add(new Content2("DELETED", li ,"테스트", "kimncbv3@gmail.com", "TO_VERIFY", or));
 		
 		g1 = "테스트1";
 		g3 = "kimncbv1@naver.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY", or));
+		ct.add(new Content2("DELETED", li ,"테스트", "kimncbv1@naver.com", "TO_VERIFY", or));
 		
 		g1 = "테스트2";
 		g3 = "kimncbv2@naver.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY",or));
+		ct.add(new Content2("DELETED", li ,"테스트", "kimncbv2@naver.com", "TO_VERIFY",or));
 		
 		g1 = "테스트4";
 		g3 = "kimncbv4@gmail.com";
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv4@gmail.com", "TO_VERIFY", or));
+		ct.add(new Content2("DELETED", li ,"테스트", "kimncbv4@gmail.com", "TO_VERIFY", or));
 		
 		
 		g1 = "테스트5";
@@ -316,7 +316,7 @@ public class apiController {
 		
 		li = new String[]{g1, g3};
 		
-		ct.add(new Content2("REGISTERED", li ,"테스트", "kimncbv5@gmail.com", "TO_VERIFY", or));
+		ct.add(new Content2("DELETED", li ,"테스트", "kimncbv5@gmail.com", "TO_VERIFY", or));
 		
 		
     	
