@@ -13,7 +13,13 @@
 		  FROM DUAL
 	</select>
 	
-	<select id="getAgentList" resultType="com.example.demo.domain.UserVO">
+	<select id="getAgentList" resultType="map">		 
+		   SELECT HRIKORNAM, HRIEMLADD, HRITELNUM, HRIDEPART, HRITEAMLD, HRIEMPDUT, HRIPOSITI 
+			FROM HUMRESINF
+	</select>
+	
+	<select id="getMetadata" resultType="com.example.demo.domain.UserVO">
 		SELECT * FROM temp1
 	</select>
+	
 </mapper>

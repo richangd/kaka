@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -15,5 +16,5 @@ public interface UserMapper {
 	
 	public List<UserVO> selectUserList();
 	
-	public List<UserVO> getAgentList();
+	public List<Map> getAgentList();
 }
