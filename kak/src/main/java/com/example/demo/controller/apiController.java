@@ -244,8 +244,8 @@ public class apiController {
 		
 		List<more_telephones> ph = new ArrayList();
 		
-		departments dp = new departments("21", true, true, "1");
-		orgunit o = new orgunit(dp, "2");
+		departments dp = new departments("22", true, true, "2");
+		orgunit o = new orgunit(dp, "3");
 		UserExtra or = new UserExtra(o);
 		
 		ph.add(new more_telephones("MOBILE", "+82 10-1111-2222", "010-1111-2222", "TOVERIFY"));
@@ -355,7 +355,8 @@ public class apiController {
 		
 		chorgco.add(new ChangeOrgContent("REGISTERED", "21", "캐논코리아", "#", false, 0));
 		chorgco.add(new ChangeOrgContent("REGISTERED", "22", "카카오게임즈", "21", false, 0));
-		chorgco.add(new ChangeOrgContent("REGISTERED", "MTSM", "MTS마케팅", "21", false, 0));
+		chorgco.add(new ChangeOrgContent("REGISTERED", "MTS", "MTS마케팅", "21", false, 0));
+		chorgco.add(new ChangeOrgContent("REGISTERED", "MTSM", "MTS마케팅", "MTS", false, 0));
 		
 		
 		if (OrgLoginType == null) {
