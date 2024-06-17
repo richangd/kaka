@@ -18,8 +18,12 @@
 			FROM HUMRESINF
 	</select>
 	
-	<select id="getMetadata" resultType="com.example.demo.domain.UserVO">
-		SELECT * FROM temp1
+	<select id="getMetaList"  parameterType="hashMap" resultType="string">
+		SELECT CODENAME_EX 
+		  FROM TWBAS_BASECODE
+		 WHERE BUSINESS = '카카오워크'
+		   AND BUN = '구현api'
+		   AND VALUE = '1'
 	</select>
 	
 </mapper>

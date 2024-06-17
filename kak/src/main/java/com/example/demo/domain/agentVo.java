@@ -1,15 +1,17 @@
 package com.example.demo.domain;
 
+import java.util.List;
+
 public class agentVo {
 
 	private int _code;
 	private String _message;
-	private String[] capabilities;	
+	private List capabilities;	
 
-	public agentVo(int i, String st, String[] stg) {
+	public agentVo(int i, String st, List agent) {
 		this._code = i;
 		this._message = st;
-		this.capabilities = stg;
+		this.capabilities = agent;
 	}
 
 	public agentVo() {
@@ -39,12 +41,12 @@ public class agentVo {
 		this._message = _message;
 	}
 
-	public String[] getcapabilities() {
+	public List getcapabilities() {
 				
 		return capabilities =  capabilities;
 	}
 
-	public void setcapabilities(String[] capabilities) {
+	public void setcapabilities(List capabilities) {
 		this.capabilities = capabilities;
 	}
 

@@ -17,4 +17,6 @@ public interface UserMapper {
 	public List<UserVO> selectUserList();
 	
 	public List<Map> getAgentList();
+	
+	public List getMetaList();
 }

@@ -49,23 +49,23 @@ public class UserController {
 		return userServiceImpl.getAgentList();
 	}
 	
+	@GetMapping("agent/Meta")
+	public List getMetaList(){
+		
+		return userServiceImpl.getMetaList();
+	}
+	
 	@GetMapping("/agent/v0/getAgentCapabilities")
 	public agentVo getAgentCapabilities(@RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
     	
     	logger.info("api/agent/v0/getAgentCapabilities");
  	   	
     	agentVo ag = new agentVo();
-    	if (OrgLoginType == null) {
-            throw new MissingRequiredHeaderException("The required header is missing.");
-        }else {
-        	String g1 = "agent";
-    		String g2 = "user";
-    		String g3 = "login";
-    		String g4 = "orgunit";
-    		
-        	ag = new agentVo(200, "ok", new String[]{g2, g4});
-        }
-        return ag;
+    	
+    	List agent = getMetaList();
+    	ag = new agentVo(200, "ok", agent);
+    	
+    	return ag;
     }    
 	
 }

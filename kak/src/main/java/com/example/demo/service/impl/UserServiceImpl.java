@@ -33,5 +33,11 @@ public class UserServiceImpl implements UserService {
 
 		return userDao.getAgentList();
 	}
+	
+	@Override
+	public List getMetaList() {
+
+		return userDao.getMetaList();
+	}
 
 }

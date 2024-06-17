@@ -12,4 +12,6 @@ public interface UserService {
 	public List<UserVO> getUserList();
 
 	public List<Map> getAgentList();
+
+	public List getMetaList();
 }
