@@ -46,7 +46,9 @@
 	<select id="getUserString" parameterType="hashMap" resultType="string">
 		SELECT LUIUSERPW 
 		  FROM LOGUSRINF
-		 WHERE LUIUSERID = #{identifier}
+		 WHERE LUIEMPNUM = (SELECT HRIEMPNUM 
+		 					  FROM HUMRESINF 
+		 					 WHERE HRIEMLADD = #{identifier})
 	</select>
 	
 	<select id="getUserValidListTotal" parameterType="hashMap" resultType="map">
