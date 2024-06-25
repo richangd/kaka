@@ -9,26 +9,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-public class Content2 {
+public class Content3 {
 	
 	private String status;
 	private String[] identifiers;	
 	private String name;
 	private String email;
 	private String email_verification;
-	private Object extra;
 	
-	public Content2(String st, String[] li, String st1, String st2, String st3, UserExtra or) {
+	
+	public Content3(String st, String st1, String st2, String st3) {
 		this.status = st;
-		this.identifiers = li;
+		this.identifiers = new String[] {st1, st2};
 		this.name = st1;
 		this.email = st2;
 		this.email_verification = st3;
-		this.extra = or;
+	
 	}
-	public Content2(String string, String string2, String string3, String string4, String string5) {
-		// TODO Auto-generated constructor stub
-	}
+	
 	public String getStatus() {
 		return status;
 	}
@@ -59,12 +57,7 @@ public class Content2 {
 	public void setEmail_verification(String email_verification) {
 		this.email_verification = email_verification;
 	}
-	public Object getExtra() {
-		return extra;
-	}
-	public void setExtra(Object extra) {
-		this.extra = extra;
-	}
+	
 	
 	
 }

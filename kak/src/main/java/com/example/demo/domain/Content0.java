@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 import java.util.List;
 
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-public class Content2 {
+public class Content0 {
 	
 	private String status;
 	private String[] identifiers;	
@@ -17,18 +18,12 @@ public class Content2 {
 	private String email;
 	private String email_verification;
 	private Object extra;
+	private String CODE; 
+	private String IS_MAIN; 
+	private String IS_LEADER; 
+	private String RESPONSIBILITY_CODE; 
+	private String POSITION_CODE;
 	
-	public Content2(String st, String[] li, String st1, String st2, String st3, UserExtra or) {
-		this.status = st;
-		this.identifiers = li;
-		this.name = st1;
-		this.email = st2;
-		this.email_verification = st3;
-		this.extra = or;
-	}
-	public Content2(String string, String string2, String string3, String string4, String string5) {
-		// TODO Auto-generated constructor stub
-	}
 	public String getStatus() {
 		return status;
 	}
@@ -36,10 +31,10 @@ public class Content2 {
 		this.status = status;
 	}
 	public String[] getIdentifiers() {
-		return identifiers;
+		return new String[] {name, email};
 	}
 	public void setIdentifiers(String[] identifiers) {
-		this.identifiers = identifiers;
+		this.identifiers =  new String[] {name, email};
 	}
 	public String getName() {
 		return name;
@@ -60,11 +55,33 @@ public class Content2 {
 		this.email_verification = email_verification;
 	}
 	public Object getExtra() {
-		return extra;
+		boolean is_main;
+		boolean is_leader;
+		
+		if(IS_MAIN.equals("1")) {
+			is_main = true;
+		}else {
+			is_main = false;
+		}
+		
+		if(IS_LEADER.equals("1")) {
+			is_leader = true;
+		}else {
+			is_leader = false;
+		}
+		
+		
+		departments dp = new departments(CODE, is_main, is_leader, RESPONSIBILITY_CODE);
+		orgunit o = new orgunit(dp, POSITION_CODE);
+		UserExtra or = new UserExtra(o);
+	    
+		
+		return or;
 	}
 	public void setExtra(Object extra) {
 		this.extra = extra;
 	}
+	
 	
 	
 }

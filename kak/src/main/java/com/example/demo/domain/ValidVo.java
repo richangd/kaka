@@ -97,7 +97,4 @@ public class ValidVo {
 		this.contents = contents;
 	}
 	
-	
-	
-	
 }

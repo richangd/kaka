@@ -114,6 +114,7 @@ public class apiController {
     		List li = new ArrayList();
     		
     		li.add(g2);
+    		li.add(g3);
     		li.add(g4);
     		
         	//ag = new agentVo(200, "ok", new String[]{g2, g4});
@@ -128,7 +129,7 @@ public class apiController {
     	logger.info("api/user/v0/getUserMetadata");
     	
     	MetadataVo ag = new MetadataVo();
-    	telephones te = new telephones();
+    	telephones te = new telephones(false, false);
     	List<synchronize_options> sy= new ArrayList<>();
     	
     	editability ed = new editability(te);

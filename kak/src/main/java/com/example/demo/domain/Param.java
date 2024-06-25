@@ -3,9 +3,9 @@ package com.example.demo.domain;
 public class Param {
     private String identifier;
     private String password;
-    private Object extra;
+    private Object extra;    
 
-    public String getidentifier() {    	
+	public String getidentifier() {    	
 		return identifier;
     }
     

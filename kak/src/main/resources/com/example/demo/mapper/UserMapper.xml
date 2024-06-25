@@ -12,18 +12,157 @@
 		SELECT '333' userId, 'Emma' userName, '02-0000-3333' phoneNumber 
 		  FROM DUAL
 	</select>
-	
-	<select id="getAgentList" resultType="map">		 
-		   SELECT HRIKORNAM, HRIEMLADD, HRITELNUM, HRIDEPART, HRITEAMLD, HRIEMPDUT, HRIPOSITI 
-			FROM HUMRESINF
+		
+	<select id="getMetaList" parameterType="hashMap" resultType="map">
+		SELECT CODENAME
+            FROM TWBAS_BASECODE
+         WHERE BUSINESS = '카카오워크'
+           AND BUN = '설정값'
 	</select>
 	
-	<select id="getMetaList"  parameterType="hashMap" resultType="string">
+	<select id="getMetaString" parameterType="hashMap" resultType="String">
+		SELECT CODENAME_EX
+            FROM TWBAS_BASECODE
+         WHERE BUSINESS = '카카오워크'
+           AND BUN = '설정값'
+	</select>
+	
+	<select id="getAgentList" parameterType="hashMap" resultType="string">		 
 		SELECT CODENAME_EX 
 		  FROM TWBAS_BASECODE
 		 WHERE BUSINESS = '카카오워크'
 		   AND BUN = '구현api'
 		   AND VALUE = '1'
 	</select>
+	
+	<select id="getHumanList" resultType="map">		 
+		SELECT 'ACTIVE' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+				case when HRIEMPDUT is null then '' end hriempdut, HRIPOSITI 
+		FROM HUMRESINF
+		WHERE HRICANCEL = '0'
+		AND HRIWRKGUB IN ('0', '1')
+	</select>
+	
+	<select id="getUserString" parameterType="hashMap" resultType="string">
+		SELECT LUIUSERPW 
+		  FROM LOGUSRINF
+		 WHERE LUIUSERID = #{identifier}
+	</select>
+	
+	<select id="getUserValidListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/#{page_size}) TOTAL_PAGE
+		 from (SELECT 'ACTIVE' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+                	  NVL(HRIEMPDUT,'') HRIEMPDUT, HRIPOSITI 
+		        FROM HUMRESINF
+		        WHERE HRICANCEL = '0'
+		        AND HRIWRKGUB IN ('0', '1'))
+	</select>
+	
+	<select id="getUserValidList1" parameterType="hashMap" resultType="map">
+		SELECT 'ACTIVE' STATUS, HRIKORNAM NAME, HRIEMLADD EMAIL, 'VERIFIED' EMAIL_VERIFICATION
+		FROM HUMRESINF
+		WHERE HRICANCEL = '0'
+		AND HRIWRKGUB IN ('0', '1')
+		AND ROWNUM = 1
+	</select>
+	
+	<select id="getUserValidList" resultType="com.example.demo.domain.Content0">
+		SELECT STATUS, NAME, EMAIL, EMAIL_VERIFICATION, CODE, IS_MAIN, IS_LEADER, RESPONSIBILITY_CODE, POSITION_CODE FROM 
+        (SELECT ROWNUM RN, 'ACTIVE' STATUS, HRIKORNAM NAME, HRIEMLADD EMAIL, 'VERIFIED' EMAIL_VERIFICATION, HRIDEPART CODE,
+                '1' IS_MAIN, NVL(HRITEAMLD, '0') IS_LEADER, HRIEMPDUT RESPONSIBILITY_CODE, HRIPOSITI POSITION_CODE
+	        FROM HUMRESINF
+	        WHERE HRICANCEL = '0'
+	        AND HRIWRKGUB IN ('0', '1'))
+        WHERE RN BETWEEN (#{page_number}-1) * #{page_size} + 1 AND #{page_number} * #{page_size}
+	</select>
+	
+	<select id="getUserChangedListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/#{page_size}) TOTAL_PAGE
+		 from (SELECT 'REGISTERED' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+                	  NVL(HRIEMPDUT,'') HRIEMPDUT, HRIPOSITI 
+		        FROM HUMRESINF
+		        WHERE HRICANCEL = '0'
+		        AND HRIWRKGUB IN ('0', '1'))
+	</select>
+	
+	<select id="getUserChangedList" resultType="com.example.demo.domain.Content0">
+		SELECT STATUS, NAME, EMAIL, EMAIL_VERIFICATION, CODE, IS_MAIN, IS_LEADER, RESPONSIBILITY_CODE, POSITION_CODE FROM 
+        (SELECT ROWNUM RN, 'REGISTERED' STATUS, HRIKORNAM NAME, HRIEMLADD EMAIL, 'VERIFIED' EMAIL_VERIFICATION, HRIDEPART CODE,
+                '1' IS_MAIN, NVL(HRITEAMLD, '0') IS_LEADER, HRIEMPDUT RESPONSIBILITY_CODE, HRIPOSITI POSITION_CODE
+	        FROM HUMRESINF
+	        WHERE HRICANCEL = '0'
+	        AND HRIWRKGUB IN ('0', '1'))
+        WHERE RN BETWEEN (#{page_number}-1) * #{page_size} + 1 AND #{page_number} * #{page_size}
+	</select>
+	
+	<select id="getUserValid" resultType="com.example.demo.domain.Content0">
+		SELECT 'ACTIVE' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+                	  NVL(HRIEMPDUT,'') HRIEMPDUT, HRIPOSITI,
+                	  '{ "orgunit":{ "department":{ "code" : "'||HRIDEPART||'", "is_main" : true", "is_leader":false,"responsibility_code":"'|| NVL(HRIEMPDUT, '')||'" },"position_code":"'||HRIPOSITI||'"}}'EXTRA 
+		        FROM HUMRESINF
+		        WHERE HRICANCEL = '0'
+		        AND HRIWRKGUB IN ('0', '1')
+	</select>
+	
+	<select id="getPositionListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/#{page_size}) TOTAL_PAGE
+		 from (SELECT CODE "code", VALUE "level", CODENAME "name"
+		  FROM TWBAS_BASECODE
+		 WHERE BUSINESS = '인사코드'
+		   AND BUN = '직위')
+	</select>
+	
+	<select id="getPositionList" parameterType="hashMap" resultType="map">
+		SELECT CODE "code", VALUE "level", CODENAME "name"
+		  FROM TWBAS_BASECODE
+		 WHERE BUSINESS = '인사코드'
+		   AND BUN = '직위'
+	</select>
+	
+	<select id="getResponsibilitieListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/#{page_size}) TOTAL_PAGE
+		 from (SELECT CODE "code", VALUE "level", CODENAME "name"
+				FROM TWBAS_BASECODE
+				WHERE BUSINESS = '인사코드'
+				AND BUN = '직책')
+	</select>
+	
+	<select id="getResponsibilitieList" parameterType="hashMap" resultType="map">
+		SELECT CODE "code", VALUE "level", CODENAME "name"
+		FROM TWBAS_BASECODE
+		WHERE BUSINESS = '인사코드'
+		AND BUN = '직책'
+	</select>
+	
+	<select id="getValidOrgunitListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/#{page_size}) TOTAL_PAGE
+		FROM(SELECT 'ACTIVE' "status", CODE "code", CODENAME "name", REMARK2 "parent_code", 'false' "is_private", NVL(VALUE, 0) "order"
+		FROM TWBAS_BASECODE
+		WHERE BUSINESS = '인사코드'
+		AND BUN = '부서코드')		
+	</select>
+	
+	<select id="getValidOrgunitList" parameterType="hashMap" resultType="map">
+		SELECT 'ACTIVE' "status", CODE "code", CODENAME "name", REMARK2 "parent_code", 'false' "is_private", NVL(VALUE, 0) "order"
+		FROM TWBAS_BASECODE
+		WHERE BUSINESS = '인사코드'
+		AND BUN = '부서코드'
+	</select>
+	
+	<select id="getChangedOrgunitListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/#{page_size}) TOTAL_PAGE
+		FROM(SELECT 'ACTIVE' "status", CODE "code", CODENAME "name", REMARK2 "parent_code", 'false' "is_private", NVL(VALUE, 0) "order"
+		FROM TWBAS_BASECODE
+		WHERE BUSINESS = '인사코드'
+		AND BUN = '부서코드')		
+	</select>
+	
+	<select id="getChangedOrgunitList" parameterType="hashMap" resultType="map">
+		SELECT 'REGISTERED' "status", CODE "code", CODENAME "name", REMARK2 "parent_code", 'false' "is_private", NVL(VALUE, 0) "order"
+		FROM TWBAS_BASECODE
+		WHERE BUSINESS = '인사코드'
+		AND BUN = '부서코드'
+	</select>
+	
 	
 </mapper>
