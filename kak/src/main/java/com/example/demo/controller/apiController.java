@@ -80,6 +80,7 @@ public class apiController {
    public idreturn post(@RequestBody Param param, @RequestHeader(value = "Kep-OrgLoginType", required = false) String OrgLoginType) {
 	   logger.info("api/login/v0/identifyUser");
 	   logger.info(param.getpassword());
+	   logger.info(param.getidentifier());
 	   logger.info(OrgLoginType);
 	   
 	   idreturn id = new idreturn();
@@ -93,7 +94,17 @@ public class apiController {
        }else {
     	   id = new idreturn("FAILURE", "AUTH_FAIL", 401, "Unauthorized");    	   
        }	   
+	   String jsonString = null;
+	   ObjectMapper objectMapper = new ObjectMapper();
+		
+       try {
+           // 객체를 JSON 문자열로 변환
+           jsonString = objectMapper.writeValueAsString(id);
+       } catch (JsonProcessingException e) {
+           e.printStackTrace();
+       }
 	   
+	   logger.info(jsonString);
        return id;
    }
 
