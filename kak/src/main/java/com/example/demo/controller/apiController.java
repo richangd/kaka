@@ -90,7 +90,7 @@ public class apiController {
 	   if (OrgLoginType == null) {
            throw new MissingRequiredHeaderException("The required header is missing.");
        }else if(pw.equals("solrnd0803!@")){
-    	   id = new idreturn("Success", "AUTH_SUCCESS", 200, "OK");
+    	   id = new idreturn("SUCCESS", "AUTH_SUCCESS", 200, "OK");
        }else {
     	   id = new idreturn("FAILURE", "AUTH_FAIL", 401, "Unauthorized");    	   
        }	   
