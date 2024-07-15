@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CanonERP.kakaoworkagent.mapper.UserMapper">
+ 
+	<select id="selectUserList" resultType="com.CanonERP.kakaoworkagent.domain.UserVO">
+		SELECT '111' userId, 'Hailey' userName, '02-0000-1111' phoneNumber
+		  FROM DUAL
+		UNION
+		SELECT '222' userId, 'Dana' userName, '031-0000-2222' phoneNumber
+		  FROM DUAL
+		UNION
+		SELECT '333' userId, 'Emma' userName, '02-0000-3333' phoneNumber 
+		  FROM DUAL
+	</select>
+		
+	<select id="getMetaList" parameterType="hashMap" resultType="map">
+		SELECT CODENAME
+            FROM TWBAS_BASECODE
+         WHERE BUSINESS = '카카오워크'
+           AND BUN = '설정값'
+	</select>
+	
+	<select id="getMetaString" parameterType="hashMap" resultType="String">
+		SELECT CODENAME_EX
+            FROM TWBAS_BASECODE
+         WHERE BUSINESS = '카카오워크'
+           AND BUN = '설정값'
+	</select>
+	
+	<select id="getAgentList" parameterType="hashMap" resultType="string">		 
+		SELECT CODENAME_EX 
+		  FROM TWBAS_BASECODE
+		 WHERE BUSINESS = '카카오워크'
+		   AND BUN = '구현api'
+		   AND VALUE = '1'
+	</select>
+	
+	<select id="getHumanList" resultType="map">		 
+		SELECT 'ACTIVE' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+				case when HRIEMPDUT is null then '' end hriempdut, HRIPOSITI 
+		FROM HUMRESINF
+		WHERE HRICANCEL = '0'
+		AND HRIWRKGUB IN ('0', '1')
+	</select>
+	
+	<select id="getUserString" parameterType="hashMap" resultType="string">
+		SELECT LUIUSERPW 
+		  FROM LOGUSRINF
+		 WHERE LUIEMPNUM = (SELECT HRIEMPNUM 
+		 					  FROM HUMRESINF 
+		 					 WHERE HRIEMLADD = #{identifier}
+		 					   AND ROWNUM = 1)
+	</select>
+	
+	<select id="getUserValidListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/200) TOTAL_PAGE
+		 from (SELECT 'ACTIVE' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+                	  NVL(HRIEMPDUT,'') HRIEMPDUT, HRIPOSITI 
+		        FROM HUMRESINF
+		        WHERE HRICANCEL = '0'
+		        AND HRIWRKGUB IN ('0', '1')
+		        AND HRIGRWCHK = '1')
+	</select>
+	
+	<select id="getUserValidList1" parameterType="hashMap" resultType="map">
+		SELECT 'ACTIVE' STATUS, HRIKORNAM NAME, HRIEMLADD EMAIL, 'VERIFIED' EMAIL_VERIFICATION
+		FROM HUMRESINF
+		WHERE HRICANCEL = '0'
+		AND HRIWRKGUB IN ('0', '1')
+		AND HRIGRWCHK = '1'
+		AND ROWNUM = 1
+	</select>
+	
+	<select id="getUserValidList" resultType="com.CanonERP.kakaoworkagent.domain.Content0">
+		SELECT STATUS, NAME, EMAIL, EMAIL_VERIFICATION, CODE, IS_MAIN, IS_LEADER, RESPONSIBILITY_CODE, POSITION_CODE,TELEPHONE_INTERNATIONAL,
+			   TELEPHONE_FOR_DISPLAY, 'VERIFIED' TELEPHONE_VERIFICATION, BIRTHDAY, GENDER, IS_LUNAR 
+		  FROM 
+        (SELECT ROWNUM RN, 'ACTIVE' STATUS, HRIKORNAM NAME, HRIEMLADD EMAIL, 'VERIFIED' EMAIL_VERIFICATION, HRIDEPART CODE,
+                '1' IS_MAIN, NVL(HRITEAMLD, '0') IS_LEADER, HRIEMPDUT RESPONSIBILITY_CODE, HRIPOSITI POSITION_CODE,
+                HRITELNUM "TELEPHONE_INTERNATIONAL", 
+                HRIMBPNUM "TELEPHONE_FOR_DISPLAY", 
+                SUBSTR(HRIRESNUM,3,2)||'-'||SUBSTR(HRIRESNUM,5,2) "BIRTHDAY",
+                CASE WHEN SUBSTR(HRIRESNUM,0,1) = 1 OR SUBSTR(HRIRESNUM,0,1) = 3 THEN 'MALE'
+                     ELSE 'FEMALE' END GENDER,
+                NVL(HRIBIRGUB, 1) IS_LUNAR
+	        FROM HUMRESINF
+	        WHERE HRICANCEL = '0'
+	        AND HRIWRKGUB IN ('0', '1')
+	        AND HRIGRWCHK = '1')
+        WHERE RN BETWEEN (#{page_number}-1) * 200 + 1 AND #{page_number} * 200
+	</select>
+	
+	<select id="getUserChangedListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/200) TOTAL_PAGE
+		 from (SELECT 'REGISTERED' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+                	  NVL(HRIEMPDUT,'') HRIEMPDUT, HRIPOSITI 
+		        FROM HUMRESINF
+		        WHERE HRICANCEL = '0'
+		        AND HRIWRKGUB IN ('0', '1')
+		        AND HRIGRWCHK = '1')
+	</select>
+	
+	<select id="getUserChangedList" resultType="com.CanonERP.kakaoworkagent.domain.Content0">
+		SELECT STATUS, NAME, EMAIL, EMAIL_VERIFICATION, CODE, IS_MAIN, IS_LEADER, RESPONSIBILITY_CODE, POSITION_CODE,TELEPHONE_INTERNATIONAL,
+			   TELEPHONE_FOR_DISPLAY, 'VERIFIED' TELEPHONE_VERIFICATION, BIRTHDAY, GENDER, IS_LUNAR
+		 FROM 
+        (SELECT ROWNUM RN, 
+        		CASE WHEN HRIGRWCHK IS NULL OR HRIGRWCHK = '0' THEN 'DELETED'  
+                     WHEN HRIGRWCHK = '1' AND HRIINCDTE = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+                     ELSE 'UPDATED'
+                      END STATUS, 
+                HRIKORNAM NAME, 
+                HRIEMLADD EMAIL, 
+                'VERIFIED' EMAIL_VERIFICATION, 
+                HRIDEPART CODE,
+                '1' IS_MAIN, 
+                NVL(HRITEAMLD, '0') IS_LEADER, 
+                HRIEMPDUT RESPONSIBILITY_CODE, 
+                HRIPOSITI POSITION_CODE,
+                HRITELNUM "TELEPHONE_INTERNATIONAL", 
+                HRIMBPNUM "TELEPHONE_FOR_DISPLAY", 
+                SUBSTR(HRIRESNUM,3,2)||'-'||SUBSTR(HRIRESNUM,5,2) "BIRTHDAY",
+                CASE WHEN SUBSTR(HRIRESNUM,0,1) = 1 OR SUBSTR(HRIRESNUM,0,1) = 3 THEN 'MALE'
+                     ELSE 'FEMALE' END GENDER,
+                NVL(HRIBIRGUB, 1) IS_LUNAR
+	        FROM HUMRESINF
+	        WHERE HRICANCEL = '0'
+	        AND HRIWRKGUB IN ('0', '1')
+	        AND HRIGRWCHK = '1')
+        WHERE RN BETWEEN (#{page_number}-1) * 200 + 1 AND #{page_number} * 200
+	</select>
+	
+	<select id="getUserValid" resultType="com.CanonERP.kakaoworkagent.domain.Content0">
+		SELECT 'ACTIVE' GUBN, HRIKORNAM, HRIEMLADD, HRITELNUM, HRIMBPNUM, HRIDEPART, HRITEAMLD, 
+                	  NVL(HRIEMPDUT,'') HRIEMPDUT, HRIPOSITI,
+                	  '{ "orgunit":{ "department":{ "code" : "'||HRIDEPART||'", "is_main" : true", "is_leader":false,"responsibility_code":"'|| NVL(HRIEMPDUT, '')||'" },"position_code":"'||HRIPOSITI||'"}}'EXTRA 
+		        FROM HUMRESINF
+		        WHERE HRICANCEL = '0'
+		        AND HRIWRKGUB IN ('0', '1')
+		        AND HRIGRWCHK = '1'
+	</select>
+	
+	<select id="getPositionListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/200) TOTAL_PAGE
+		 from (SELECT CODE "code", VALUE "level", CODENAME "name"
+		  FROM TWBAS_BASECODE
+		 WHERE BUSINESS = '인사코드'
+		   AND BUN = '직위'
+		   AND GBUSE = '0')
+	</select>
+	
+	<select id="getPositionList" parameterType="hashMap" resultType="map">
+		SELECT CODE "code", VALUE "level", CODENAME "name"
+		  FROM TWBAS_BASECODE
+		 WHERE BUSINESS = '인사코드'
+		   AND BUN = '직위'
+		   AND GBUSE = '0'
+	</select>
+	
+	<select id="getResponsibilitieListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/200) TOTAL_PAGE
+		 from (SELECT CODE "code", VALUE "level", CODENAME "name"
+				FROM TWBAS_BASECODE
+				WHERE BUSINESS = '인사코드'
+				AND BUN = '직책'
+				AND GBUSE = '0')
+	</select>
+	
+	<select id="getResponsibilitieList" parameterType="hashMap" resultType="map">
+		SELECT CODE "code", VALUE "level", CODENAME "name"
+		FROM TWBAS_BASECODE
+		WHERE BUSINESS = '인사코드'
+		AND BUN = '직책'
+		AND GBUSE = '0'
+	</select>
+	
+	<select id="getValidOrgunitListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/200) TOTAL_PAGE
+		FROM(SELECT CASE WHEN GBUSE = '1' THEN 'DELETED' 
+		                   WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+		                   WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') != TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'UPDATED'                       
+		                   END "status", 
+		                      CODE "code", 
+		                      CODENAME "name", 
+		                      REMARK2 "parent_code", 
+		                      'false' "is_private", 
+		                      NVL(VALUE, 0) "order"
+		                  FROM TWBAS_BASECODE
+		                 WHERE BUSINESS = '인사코드'
+		                   AND BUN = '부서코드(최상위)'
+		           UNION ALL
+		        SELECT   CASE WHEN GBUSE = '1' THEN 'DELETED' 
+		                     WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+		                     WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') != TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'UPDATED'                       
+		                     END "status", 
+		                         CODE "code", 
+		                         CODENAME "name", 
+		                         REMARK2 "parent_code", 
+		                         'false' "is_private", 
+		                         NVL(VALUE, 0) "order"
+		          FROM TWBAS_BASECODE
+		         WHERE BUSINESS = '인사코드'
+		           AND BUN = '부서코드'
+		           AND REMARK2 IN (SELECT CODE 
+	                                  FROM TWBAS_BASECODE
+	                                WHERE BUSINESS = '인사코드'
+	                                  AND BUN = '부서코드(최상위)'
+	                                  AND GBUSE = '0'))		
+	</select>
+	
+	<select id="getValidOrgunitList" parameterType="hashMap" resultType="map">
+		SELECT "status", "code", "name", "parent_code", "is_private", "order" FROM 
+        (SELECT ROWNUM RN, A.* 
+        FROM 
+		(SELECT 'ACITIVE' "status", 
+		                      CODE "code", 
+		                      CODENAME "name", 
+		                      REMARK2 "parent_code", 
+		                      'false' "is_private", 
+		                      NVL(VALUE, 0) "order"
+		                  FROM TWBAS_BASECODE
+		                 WHERE BUSINESS = '인사코드'
+		                   AND BUN = '부서코드(최상위)'
+		           UNION ALL
+		        SELECT  'ACITIVE' "status", 
+		                         CODE "code", 
+		                         CODENAME "name", 
+		                         REMARK2 "parent_code", 
+		                         'false' "is_private", 
+		                         NVL(VALUE, 0) "order"
+		          FROM TWBAS_BASECODE
+		         WHERE BUSINESS = '인사코드'
+		           AND BUN = '부서코드'
+		           AND REMARK2 IN (SELECT CODE 
+	                                  FROM TWBAS_BASECODE
+	                                WHERE BUSINESS = '인사코드'
+	                                  AND BUN = '부서코드(최상위)'
+	                                  AND GBUSE = '0')) A)
+        WHERE RN BETWEEN (#{page_number}-1) * 200 + 1 AND #{page_number} * 200
+	</select>
+	
+	<select id="getChangedOrgunitListTotal" parameterType="hashMap" resultType="map">
+		SELECT COUNT(*) Total_count, CEIL(COUNT(*)/200) TOTAL_PAGE
+		FROM(SELECT CASE WHEN GBUSE = '1' THEN 'DELETED' 
+		                   WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+		                   WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') != TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'UPDATED'                       
+		                   END "status", 
+		                      CODE "code", 
+		                      CODENAME "name", 
+		                      REMARK2 "parent_code", 
+		                      'false' "is_private", 
+		                      NVL(VALUE, 0) "order"
+		                  FROM TWBAS_BASECODE
+		                 WHERE BUSINESS = '인사코드'
+		                   AND BUN = '부서코드(최상위)'
+		           UNION ALL
+		        SELECT   CASE WHEN GBUSE = '1' THEN 'DELETED' 
+		                     WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+		                     WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') != TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'UPDATED'                       
+		                     END "status", 
+		                         CODE "code", 
+		                         CODENAME "name", 
+		                         REMARK2 "parent_code", 
+		                         'false' "is_private", 
+		                         NVL(VALUE, 0) "order"
+		          FROM TWBAS_BASECODE
+		         WHERE BUSINESS = '인사코드'
+		           AND BUN = '부서코드'
+		           AND REMARK2 IN (SELECT CODE 
+	                                  FROM TWBAS_BASECODE
+	                                WHERE BUSINESS = '인사코드'
+	                                  AND BUN = '부서코드(최상위)'
+	                                  AND GBUSE = '0'))		
+	</select>
+	
+	<select id="getChangedOrgunitList" parameterType="hashMap" resultType="map">		
+        SELECT "status", "code", "name", "parent_code", "is_private", "order" FROM 
+        (SELECT ROWNUM RN, A.* 
+        FROM 
+		(SELECT CASE WHEN GBUSE = '1' THEN 'DELETED' 
+		                   WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+		                   WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') != TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'UPDATED'                       
+		                   END "status", 
+		                      CODE "code", 
+		                      CODENAME "name", 
+		                      REMARK2 "parent_code", 
+		                      'false' "is_private", 
+		                      NVL(VALUE, 0) "order"
+		                  FROM TWBAS_BASECODE
+		                 WHERE BUSINESS = '인사코드'
+		                   AND BUN = '부서코드(최상위)'
+		           UNION ALL
+		        SELECT   CASE WHEN GBUSE = '1' THEN 'DELETED' 
+		                     WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'REGISTERED'
+		                     WHEN TO_CHAR(INSERTDATE, 'YYYY-MM-DD') != TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN 'UPDATED'                       
+		                     END "status", 
+		                         CODE "code", 
+		                         CODENAME "name", 
+		                         REMARK2 "parent_code", 
+		                         'false' "is_private", 
+		                         NVL(VALUE, 0) "order"
+		          FROM TWBAS_BASECODE
+		         WHERE BUSINESS = '인사코드'
+		           AND BUN = '부서코드'
+		           AND REMARK2 IN (SELECT CODE 
+	                                  FROM TWBAS_BASECODE
+	                                WHERE BUSINESS = '인사코드'
+	                                  AND BUN = '부서코드(최상위)'
+	                                  AND GBUSE = '0')) A)
+        WHERE RN BETWEEN (#{page_number}-1) * 200 + 1 AND #{page_number} * 200
+	</select>
+	
+	
+</mapper>
